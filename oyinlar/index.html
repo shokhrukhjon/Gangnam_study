@@ -115,6 +115,92 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:8}
 .drop.hit{background:#DCFCE7;transform:scale(1.3)}.drop.miss{background:#FFE4E6}
 @keyframes fall{to{top:460px}}
 @media(max-width:700px){.lvls{grid-template-columns:repeat(3,1fr)}.lv small{display:none}.rain{height:380px}@keyframes fall{to{top:400px}}}
+.kz{position:relative;display:inline-block;flex-shrink:0;line-height:0;transform-origin:50% 100%;animation:kzBreath 3.2s ease-in-out infinite}
+.kz.tilt{animation:kzTilt 1.6s ease-in-out}
+.kz.jump{animation:kzJump .7s cubic-bezier(.3,1.6,.5,1)}
+.kz.jump3{animation:kzJump .7s cubic-bezier(.3,1.6,.5,1) 3}
+.kz.sad{animation:kzSad 1.4s ease-in-out}
+.kz.look{animation:kzLook 2.2s ease-in-out}
+@keyframes kzBreath{0%,100%{transform:scale(1,1)}50%{transform:scale(1.015,1.03)}}
+@keyframes kzTilt{0%,100%{transform:rotate(0)}30%,70%{transform:rotate(-8deg)}}
+@keyframes kzJump{0%{transform:translateY(0) scale(1,1)}20%{transform:translateY(0) scale(1.08,.9)}50%{transform:translateY(-22%) scale(.95,1.06)}80%{transform:translateY(0) scale(1.05,.95)}100%{transform:none}}
+@keyframes kzSad{0%,100%{transform:rotate(0) translateY(0)}20%{transform:rotate(6deg) translateY(3%)}40%{transform:rotate(-6deg) translateY(3%)}60%{transform:rotate(4deg) translateY(3%)}}
+@keyframes kzLook{0%,100%{transform:translateX(0) rotate(0)}30%{transform:translateX(-4%) rotate(-4deg)}65%{transform:translateX(4%) rotate(4deg)}}
+.kz svg{width:100%;height:auto;display:block;overflow:visible}
+.kz .eye,.kz .hap{transform-box:fill-box;transform-origin:center;transition:transform .08s ease-in,opacity .1s}
+.kz.blink .eye{transform:scaleY(.08)}
+.kz .hap{opacity:0}
+.kz.happy .eye{opacity:0}
+.kz.happy .hap{opacity:1}
+.kz .tear{opacity:0;transition:opacity .25s}
+.kz.sad .tear{opacity:1}
+.kz .tail{transform-box:fill-box;transform-origin:0% 100%;animation:kzWag 1.8s ease-in-out infinite}
+.kz .ear{transform-box:fill-box;transform-origin:50% 100%}
+.kz .ear.l{animation:kzEar 6s ease-in-out infinite}
+.kz .ear.r{animation:kzEar 6s ease-in-out 3s infinite}
+.kz .headg{transform-box:fill-box;transform-origin:50% 90%}
+.kz.look .headg{animation:kzHead 2.2s ease-in-out}
+@keyframes kzWag{0%,100%{transform:rotate(0)}50%{transform:rotate(-16deg)}}
+@keyframes kzEar{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-10deg)}96%{transform:rotate(6deg)}}
+@keyframes kzHead{0%,100%{transform:rotate(0)}30%{transform:rotate(-7deg)}65%{transform:rotate(7deg)}}
+.expl::before,.toast::before,.gfoot .fcat{background-color:#E6EBFF!important}
+
+.kz.swap{transition:transform .22s ease-in,opacity .22s;transform:scale(.6) rotate(-10deg)!important;opacity:0}
+.kz.swapin{animation:kzIn .45s cubic-bezier(.2,1.6,.4,1)}
+@keyframes kzIn{0%{transform:scale(.6) rotate(10deg);opacity:0}100%{transform:none;opacity:1}}
+/* ===== v3 Ko'zmunchoq redesign ===== */
+:root{--navy:#3B2A6B;--bg:#FFF8F0;--ink:#2B2340;--mut:#7A6E8F;--lc:#22C55E;--lbg:#ECFDF3;--pink:#FF5A7A;--sun:#FFB020}
+html,body{background:radial-gradient(circle at 10% 0%,#FFE9D6 0,transparent 40%),radial-gradient(circle at 100% 30%,#EDE4FF 0,transparent 40%),var(--bg);background-attachment:fixed}
+.logo{background:linear-gradient(135deg,#FF5A7A,#A855F7);border-radius:14px;box-shadow:0 3px 0 #D9467A}
+.pill{box-shadow:0 3px 0 #F1E4D6;color:var(--navy)}
+.hero{background:linear-gradient(135deg,#FFD6E0 0%,#FFE7C2 45%,#E3DBFF 100%);color:var(--ink);display:flex;align-items:center;gap:14px;padding:22px 20px;border-radius:28px;box-shadow:0 6px 0 #EFD9CC;overflow:visible}
+.hero .hl{flex:1.3;min-width:0}.hero .hr{flex:1;display:flex;flex-direction:column;align-items:center;position:relative}
+.hero h1{color:var(--navy);font-size:32px;font-weight:900}.hero p{color:#5B4E75;opacity:1;font-weight:800}
+.hero .tag{display:inline-block;background:#fff;border-radius:999px;padding:6px 12px;font-weight:900;font-size:13px;color:#D9467A;margin-bottom:10px;box-shadow:0 2px 0 #F5D3DD}
+.hero .inp{display:block;width:100%;margin-top:14px;background:#fff;box-shadow:inset 0 0 0 2px #F3E2EE}
+.hero .toggle{color:#5B4E75;margin-top:10px;display:flex;gap:8px;align-items:center;font-weight:800;font-size:14px}
+.hero-kz{width:170px;height:170px;cursor:pointer;filter:drop-shadow(0 10px 10px rgba(91,60,130,.18))}
+.hbub{background:#fff;border-radius:18px;padding:10px 14px;font-weight:700;font-size:14px;color:#4A3F63;max-width:240px;position:relative;margin-top:6px;box-shadow:0 3px 0 #EADCF3;text-align:center}
+.hbub b{display:block;color:#D9467A;margin-bottom:2px}
+.hbub:before{content:'';position:absolute;top:-8px;left:50%;margin-left:-8px;border:8px solid transparent;border-top:0;border-bottom-color:#fff}
+.kz.sm{width:74px;height:74px}.kz.lg{width:150px;height:150px}
+.lvls{margin-top:18px;gap:10px}
+.lv{background:#fff;border-radius:20px;box-shadow:0 4px 0 #EFE3D7;border:3px solid transparent}
+.lv.on{background:var(--b);border-color:var(--c);box-shadow:0 4px 0 var(--c)}
+.lv .li{font-size:24px}
+.sech{display:flex;justify-content:space-between;align-items:baseline;margin:22px 4px 0}
+.sech h2{margin:0;color:var(--navy);font-size:22px}.sech span{color:var(--mut);font-weight:800}
+.modes{margin-top:12px}
+.mode{border-radius:22px;box-shadow:0 5px 0 #EFE3D7;border:2px solid #FBF1E7;position:relative}
+.mode:hover{border-color:var(--lc)}
+.mode .ic{border-radius:18px}
+.mode .meta{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.mode .meta em{font-style:normal;font-size:12px;font-weight:900;background:var(--lbg);color:var(--navy);border-radius:999px;padding:4px 9px}
+.mode .meta em.gold{background:#FFF4D6;color:#B7791F}
+.panel{border-radius:26px;box-shadow:0 6px 0 #EFE3D7}
+.panel.mis{margin-top:18px}
+.back{background:var(--lbg);color:var(--navy)}
+.stat{background:#FFF3E8}
+.opt{border-radius:18px}
+.opt .ob{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:9px;background:var(--lbg);color:var(--navy);font-size:13px;font-weight:900;margin-right:8px;font-family:Nunito;vertical-align:middle}
+.opt.ok .ob{background:#fff}.opt.no .ob{background:#fff}
+.word{background:linear-gradient(135deg,var(--lbg),#fff);border-radius:22px}
+.card .f{background:linear-gradient(135deg,#FF8FA8,#A88BFF)!important}
+/* floating buddy */
+.buddy{position:fixed;right:14px;bottom:14px;display:flex;align-items:flex-end;gap:6px;z-index:40;pointer-events:none;opacity:.92;transition:transform .25s}
+.buddy .bub{background:#fff;border-radius:16px;padding:8px 12px;font-weight:900;font-size:14px;color:var(--navy);box-shadow:0 3px 0 #EADCF3;opacity:0;transform:translateY(8px) scale(.9);transition:.2s;max-width:180px}
+.buddy.show .bub{opacity:1;transform:none}
+.buddy.ok .bub{color:#16A34A}.buddy.no .bub{color:#E11D48}
+.buddy.show{transform:scale(1.12)}
+.game{padding-bottom:70px}
+/* result */
+.res{text-align:center}
+.reskz{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:6px}
+.rbub{background:var(--lbg);border-radius:16px;padding:10px 14px;font-weight:800;color:var(--navy);max-width:420px}
+.foot{color:var(--mut);font-weight:700;text-align:center;margin-top:24px;line-height:1.6}
+@media(max-width:620px){.hero{flex-direction:column-reverse;text-align:center}.hero .toggle{justify-content:center}.hero-kz{width:140px;height:140px}.hero h1{font-size:26px}.kz.sm{width:58px;height:58px}}
+.hbub{margin-top:22px}.rbub{margin-top:18px}.reskz .kz{margin-top:8px}
+.opt .ob{font-family:'Nunito',system-ui,sans-serif}
 </style>
 </head>
 <body>
@@ -122,314 +208,392 @@ canvas#cf{position:fixed;inset:0;pointer-events:none;z-index:8}
 <div class="toast" id="toast"></div>
 <div id="app">
  <header>
-  <div class="brand"><div class="logo">강</div><div><b>Gangnam Study</b><small>Koreyscha o'yinlar markazi</small></div></div>
+  <div class="brand"><div class="logo">강</div><div><b>Gangnam Study</b><small>Koreyscha o'yinlar</small></div></div>
   <div class="pill">⭐ <span id="total">0</span> ball</div>
  </header>
  <main id="view"></main>
- <div class="foot">Gangnam Study · Jizzax · 한국어 공부는 재미있어요!</div>
+ <div class="foot">🐾 Ko'zmunchoq bilan o'rganing · har o'yinda yangi so'zlar — barcha so'zlar tugamaguncha takrorlanmaydi<br>Gangnam Study · Jizzax · 한국어 공부는 재미있어요!</div>
 </div>
 <script>
-// ================= DATA =================
-const HANGUL_C=[['ㄱ','g/k'],['ㄴ','n'],['ㄷ','d/t'],['ㄹ','r/l'],['ㅁ','m'],['ㅂ','b/p'],['ㅅ','s'],['ㅇ','ng (jim)'],['ㅈ','j'],['ㅊ','ch'],['ㅋ','k'],['ㅌ','t'],['ㅍ','p'],['ㅎ','h']];
-const HANGUL_V=[['ㅏ','a'],['ㅑ','ya'],['ㅓ','eo (o)'],['ㅕ','yeo (yo)'],['ㅗ','o'],['ㅛ','yo'],['ㅜ','u'],['ㅠ','yu'],['ㅡ','eu (ı)'],['ㅣ','i'],['ㅐ','ae (e)'],['ㅔ','e']];
-const SYL=[['ㄱ','ㅏ','가'],['ㄴ','ㅏ','나'],['ㄷ','ㅗ','도'],['ㄹ','ㅜ','루'],['ㅁ','ㅣ','미'],['ㅂ','ㅏ','바'],['ㅅ','ㅓ','서'],['ㅇ','ㅗ','오'],['ㅈ','ㅏ','자'],['ㅊ','ㅣ','치'],['ㅋ','ㅗ','코'],['ㅌ','ㅏ','타'],['ㅍ','ㅜ','푸'],['ㅎ','ㅏ','하'],['ㄱ','ㅜ','구'],['ㄴ','ㅓ','너'],['ㅁ','ㅗ','모'],['ㅅ','ㅣ','시'],['ㅇ','ㅜ','우'],['ㅎ','ㅗ','호']];
-const EMOJI=[['🍎','사과','olma'],['🍌','바나나','banan'],['🍞','빵','non'],['☕','커피','qahva'],['🥛','우유','sut'],['🍚','밥','guruch'],['🐶','개','it'],['🐱','고양이','mushuk'],['🐟','생선','baliq'],['🏠','집','uy'],['🏫','학교','maktab'],['🏥','병원','kasalxona'],['🚌','버스','avtobus'],['✈️','비행기','samolyot'],['🚗','자동차','mashina'],['📚','책','kitob'],['✏️','연필','qalam'],['👜','가방','sumka'],['⌚','시계','soat'],['📱','휴대폰','telefon'],['☀️','해','quyosh'],['🌧','비','yomg\'ir'],['❄️','눈','qor'],['🌸','꽃','gul'],['⛰','산','tog\''],['🌊','바다','dengiz'],['👨‍🏫','선생님','o\'qituvchi'],['👶','아기','chaqaloq'],['❤️','사랑','sevgi'],['🎂','케이크','tort'],['👟','신발','poyabzal'],['👕','옷','kiyim'],['🔑','열쇠','kalit'],['🎁','선물','sovg\'a'],['💰','돈','pul']];
-const NUM_SINO=[['일',1],['이',2],['삼',3],['사',4],['오',5],['육',6],['칠',7],['팔',8],['구',9],['십',10],['이십',20],['삼십',30],['오십',50],['백',100],['천',1000],['만',10000],['십오',15],['이십삼',23],['구십구',99],['삼백',300]];
-const NUM_NAT=[['하나',1],['둘',2],['셋',3],['넷',4],['다섯',5],['여섯',6],['일곱',7],['여덟',8],['아홉',9],['열',10],['스물',20],['서른',30]];
-const GREET=[['안녕하세요','Salom'],['감사합니다','Rahmat'],['미안합니다','Kechirasiz (uzr)'],['안녕히 가세요','Xayr (ketayotganga)'],['안녕히 계세요','Xayr (qolayotganga)'],['네','Ha'],['아니요','Yo\'q'],['괜찮아요','Hechqisi yo\'q'],['처음 뵙겠습니다','Tanishganimdan xursandman'],['잘 먹겠습니다','Yoqimli ishtaha (ovqatdan oldin)'],['생일 축하해요','Tug\'ilgan kuning muborak'],['사랑해요','Seni sevaman'],['화이팅!','Omad! Olg\'a!'],['얼마예요?','Qancha turadi?'],['몰라요','Bilmayman']];
-const V_BEG=[['학교','maktab'],['학생','o\'quvchi'],['선생님','o\'qituvchi'],['친구','do\'st'],['가족','oila'],['어머니','ona'],['아버지','ota'],['동생','uka/singil'],['물','suv'],['밥','ovqat, guruch'],['사과','olma'],['우유','sut'],['빵','non'],['책','kitob'],['가방','sumka'],['시계','soat'],['병원','kasalxona'],['시장','bozor'],['식당','oshxona'],['은행','bank'],['지하철','metro'],['버스','avtobus'],['바다','dengiz'],['산','tog\''],['오늘','bugun'],['내일','ertaga'],['어제','kecha'],['가다','bormoq'],['오다','kelmoq'],['먹다','yemoq'],['마시다','ichmoq'],['보다','ko\'rmoq'],['자다','uxlamoq'],['사다','sotib olmoq'],['좋다','yaxshi'],['크다','katta'],['작다','kichik'],['맛있다','mazali'],['예쁘다','chiroyli'],['춥다','sovuq']];
-const V_MID=[['날씨','ob-havo'],['약속','va\'da, uchrashuv'],['여행','sayohat'],['취미','qiziqish, hobbi'],['운동','sport'],['회사','kompaniya'],['회의','majlis'],['직업','kasb'],['경험','tajriba'],['문화','madaniyat'],['소식','xabar'],['계획','reja'],['준비하다','tayyorlanmoq'],['연습하다','mashq qilmoq'],['부탁하다','iltimos qilmoq'],['결정하다','qaror qilmoq'],['기억하다','eslamoq'],['잊어버리다','unutmoq'],['도착하다','yetib kelmoq'],['출발하다','jo\'namoq'],['예약하다','bron qilmoq'],['고장 나다','buzilmoq'],['걱정하다','xavotirlanmoq'],['궁금하다','qiziq (bilgim keladi)'],['피곤하다','charchagan'],['복잡하다','murakkab, gavjum'],['조용하다','tinch'],['편리하다','qulay'],['중요하다','muhim'],['유명하다','mashhur'],['갑자기','to\'satdan'],['벌써','allaqachon'],['아직','hali'],['자주','tez-tez'],['보통','odatda'],['특히','ayniqsa'],['같이','birga'],['혼자','yolg\'iz'],['열심히','tirishqoqlik bilan'],['천천히','sekin']];
-const V_ADV=[['경제','iqtisod'],['환경','atrof-muhit'],['사회','jamiyat'],['교육','ta\'lim'],['기술','texnologiya'],['인공지능','sun\'iy intellekt'],['고령화','aholining qarishi'],['저출산','tug\'ilishning kamayishi'],['취업','ishga kirish'],['소비','iste\'mol'],['물가','narxlar'],['재활용','qayta ishlash'],['기후 변화','iqlim o\'zgarishi'],['차별','kamsitish'],['복지','ijtimoiy ta\'minot'],['갈등','ziddiyat'],['배려','g\'amxo\'rlik'],['유산','meros'],['증가하다','oshmoq'],['감소하다','kamaymoq'],['해결하다','hal qilmoq'],['예방하다','oldini olmoq'],['극복하다','yengib o\'tmoq'],['의존하다','qaram bo\'lmoq'],['발달하다','rivojlanmoq'],['비판하다','tanqid qilmoq'],['강조하다','ta\'kidlamoq'],['우려하다','xavotirlanmoq'],['효율적','samarali'],['긍정적','ijobiy'],['부정적','salbiy'],['꾸준히','muttasil'],['급격히','keskin'],['뿌듯하다','faxrlanmoq'],['서운하다','xafa bo\'lmoq'],['뭉클하다','ta\'sirlanmoq'],['면역력','immunitet'],['경쟁력','raqobatbardoshlik'],['일회용품','bir martalik buyum'],['대중교통','jamoat transporti']];
-const CONJ=[['가다','가요'],['오다','와요'],['먹다','먹어요'],['마시다','마셔요'],['보다','봐요'],['하다','해요'],['읽다','읽어요'],['자다','자요'],['배우다','배워요'],['만나다','만나요'],['듣다','들어요'],['쓰다','써요'],['살다','살아요'],['춥다','추워요'],['덥다','더워요'],['예쁘다','예뻐요'],['바쁘다','바빠요'],['좋다','좋아요'],['있다','있어요'],['공부하다','공부해요']];
-const PART=[['저(  ) 학생이에요.','는',['는','를','에서','에게']],['사과(  ) 먹어요.','를',['를','는','에','와']],['학교(  ) 가요.','에',['에','에서','를','이']],['도서관(  ) 공부해요.','에서',['에서','에','을','과']],['친구(  ) 전화해요.','에게',['에게','에서','를','이']],['날씨(  ) 좋아요.','가',['가','를','에','에게']],['빵(  ) 우유를 샀어요.','과',['과','에','는','에서']],['지하철(  ) 회사에 가요.','로',['로','에','를','가']],['아침 7시(  ) 일어나요.','에',['에','에서','을','로']],['언니(  ) 키가 커요.','는',['는','를','에게','로']],['한국어(  ) 배워요.','를',['를','이','에','와']],['동생(  ) 선물을 줬어요.','에게',['에게','에서','이','을']]];
-const ANT=[['크다','작다'],['많다','적다'],['덥다','춥다'],['길다','짧다'],['비싸다','싸다'],['쉽다','어렵다'],['가다','오다'],['열다','닫다'],['좋다','나쁘다'],['빠르다','느리다'],['무겁다','가볍다'],['밝다','어둡다'],['높다','낮다'],['넓다','좁다'],['시작하다','끝나다'],['입다','벗다'],['웃다','울다'],['이기다','지다']];
-const S_BEG=[['저는 학생이에요','Men o\'quvchiman'],['이것은 책이에요','Bu kitob'],['물을 마셔요','Suv ichaman'],['학교에 가요','Maktabga boraman'],['친구를 만나요','Do\'stim bilan uchrashaman'],['사과가 맛있어요','Olma mazali'],['오늘 날씨가 좋아요','Bugun ob-havo yaxshi'],['저는 한국어를 배워요','Men koreys tilini o\'rganaman']];
-const S_MID=[['친구와 같이 밥을 먹었어요','Do\'stim bilan birga ovqat yedim'],['내일 시장에 갈 거예요','Ertaga bozorga boraman'],['도서관에서 책을 읽어요','Kutubxonada kitob o\'qiyman'],['지하철로 회사에 가요','Metroda ishga boraman'],['주말에 가족과 여행했어요','Dam olishda oilam bilan sayohat qildim'],['비가 와서 집에 있었어요','Yomg\'ir yoqqani uchun uyda qoldim'],['한국 음식을 먹어 보고 싶어요','Koreys taomini tatib ko\'rmoqchiman'],['시간이 있으면 같이 영화를 봐요','Vaqtingiz bo\'lsa birga kino ko\'raylik'],['저녁을 먹은 후에 산책해요','Kechki ovqatdan keyin sayr qilaman'],['한국어 공부가 재미있지만 어려워요','Koreys tili qiziqarli, lekin qiyin']];
-const S_ADV=[['비가 오는 바람에 늦었어요','Yomg\'ir yog\'ib qolgani uchun kechikdim'],['열심히 공부한 덕분에 합격했어요','Qattiq o\'qiganim sharofati bilan o\'tdim'],['연습하면 할수록 실력이 늘어요','Mashq qilgan sari mahorat oshadi'],['환경을 보호하기 위해 노력해야 한다','Atrof-muhitni himoya qilish uchun harakat qilish kerak'],['처음에는 어렵기 마련이다','Boshida qiyin bo\'lishi tabiiy'],['그 사람이 거짓말을 할 리가 없다','U odam yolg\'on gapirishi mumkin emas'],['1인 가구가 꾸준히 증가하고 있다','Yolg\'iz yashovchi oilalar muttasil ko\'paymoqda'],['일회용품 사용을 줄여야 한다','Bir martalik buyumlarni kamaytirish kerak']];
-const IDIOM=[['발이 넓다','tanishlari ko\'p'],['손이 크다','saxiy, ko\'p qiladi'],['눈치가 빠르다','vaziyatni tez sezadi'],['귀가 얇다','gapga tez ishonadi'],['입이 무겁다','sir saqlaydi'],['눈이 높다','talabchan'],['손을 떼다','ishni tashlamoq'],['발을 동동 구르다','qattiq xavotirlanmoq'],['귀를 기울이다','diqqat bilan tinglamoq'],['하늘의 별 따기','juda qiyin ish'],['식은 죽 먹기','juda oson ish'],['밑 빠진 독에 물 붓기','befoyda mehnat'],['티끌 모아 태산','oz-ozdan ko\'p bo\'lur'],['소 잃고 외양간 고친다','kech qolgan chora'],['원숭이도 나무에서 떨어진다','ustasi ham xato qiladi'],['빈 수레가 요란하다','bo\'sh idish ko\'p jaranglaydi']];
-const HEAD=[['수출 \'훨훨\'','eksport tez o\'smoqda'],['물가 \'고공 행진\'','narxlar to\'xtovsiz yuqori'],['매출 \'곤두박질\'','savdo keskin tushdi'],['경제 \'빨간불\'','iqtisodda xavf belgisi'],['취업률 \'제자리걸음\'','ishga kirish o\'zgarmayapti'],['소비 \'꽁꽁\'','iste\'mol muzlab qoldi'],['관광객 \'발길\' 이어져','sayyohlar oqimi davom etmoqda'],['성장세 \'주춤\'','o\'sish sekinlashdi'],['서민 \'숨통\'','oddiy xalq yengil tortdi'],['청년 창업 \'봇물\'','yosh tadbirkorlar ko\'paydi'],['경기 회복 \'청신호\'','iqtisod tiklanishida yaxshi belgi'],['한국 영화 \'날개\' 달다','koreys kinosi ravnaq topmoqda']];
-const GRAPH=[['증가하다','oshmoq ↑'],['감소하다','kamaymoq ↓'],['급증하다','keskin oshmoq ↑↑'],['급감하다','keskin kamaymoq ↓↓'],['꾸준히','muttasil'],['소폭','ozgina'],['2배 늘다','2 baravar oshmoq'],['절반을 차지하다','yarmini tashkil etmoq'],['그 뒤를 잇다','undan keyin turmoq'],['가장 높게 나타나다','eng yuqori bo\'lmoq'],['원인으로는 ~을 들 수 있다','sabab sifatida ... ni ko\'rsatish mumkin'],['~할 것으로 예상된다','... deb kutilmoqda']];
-// TOPIK-style MCQ: [question, options(correct first), explanation]
+// ================= DATA (large banks; "kr|uz;kr|uz") =================
+const W=s=>s.trim().split(/\s*;\s*/).filter(Boolean).map(x=>x.split('|').map(y=>y.trim()));
+const HANGUL_C=W(`ㄱ|g/k;ㄴ|n;ㄷ|d/t;ㄹ|r/l;ㅁ|m;ㅂ|b/p;ㅅ|s;ㅇ|ng;ㅈ|j;ㅊ|ch;ㅋ|k;ㅌ|t;ㅍ|p;ㅎ|h;ㄲ|kk;ㄸ|tt;ㅃ|pp;ㅆ|ss;ㅉ|jj`);
+const HANGUL_V=W(`ㅏ|a;ㅑ|ya;ㅓ|eo;ㅕ|yeo;ㅗ|o;ㅛ|yo;ㅜ|u;ㅠ|yu;ㅡ|eu;ㅣ|i;ㅐ|ae;ㅔ|e;ㅒ|yae;ㅖ|ye;ㅘ|wa;ㅝ|wo;ㅚ|oe;ㅟ|wi;ㅢ|ui`);
+const LETTERS=HANGUL_C.concat(HANGUL_V);
+const SYL=(()=>{const C='ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ',V='ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ';const out=[];const cs=[0,2,3,5,6,7,9,11,12,14,15,16,17,18],vs=[0,4,8,13,18,20,1,5,2,6,12,17];
+ cs.forEach(c=>vs.forEach(v=>out.push([C[c],V[v],String.fromCharCode(0xAC00+(c*21+v)*28)])));return out})();
+const SYLB=(()=>{const C='ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ',V='ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ',J=['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];const out=[];
+ [[0,0,4],[2,0,4],[6,0,4],[18,0,4],[0,8,21],[11,0,21],[11,4,21],[6,8,16],[7,0,4],[9,8,4],[12,0,16],[16,0,16],[3,0,1],[0,13,16],[5,0,21],[9,0,16],[11,20,8],[14,0,21],[18,8,4],[2,4,4],[0,20,16],[11,13,4],[6,20,8],[15,0,16]].forEach(([c,v,j])=>out.push([C[c]+' + '+V[v]+' + '+J[j],String.fromCharCode(0xAC00+(c*21+v)*28+j)]));return out})();
+const EMOJI=W(`🍎|사과;🍌|바나나;🍇|포도;🍓|딸기;🍉|수박;🍊|귤;🍑|복숭아;🍞|빵;☕|커피;🥛|우유;🍚|밥;🍜|라면;🍗|치킨;🍕|피자;🥚|계란;🧀|치즈;🍰|케이크;🍦|아이스크림;🍫|초콜릿;🐶|개;🐱|고양이;🐟|물고기;🐦|새;🐮|소;🐷|돼지;🐴|말;🐰|토끼;🐯|호랑이;🐻|곰;🐵|원숭이;🏠|집;🏫|학교;🏥|병원;🏦|은행;🚌|버스;✈️|비행기;🚗|자동차;🚲|자전거;🚕|택시;🚢|배;📚|책;✏️|연필;👜|가방;⌚|시계;📱|휴대폰;💻|컴퓨터;📺|텔레비전;☀️|해;🌙|달;⭐|별;🌧|비;❄️|눈;🌸|꽃;🌳|나무;⛰|산;🌊|바다;👨‍🏫|선생님;👶|아기;❤️|사랑;🎁|선물;👟|신발;👕|옷;👓|안경;🔑|열쇠;💰|돈;🎵|음악;⚽|축구;🧢|모자;☂️|우산;🛏|침대;🪑|의자;🚪|문;🪟|창문`);
+const EMOJI_UZ=W(`사과|olma;바나나|banan;포도|uzum;딸기|qulupnay;수박|tarvuz;귤|mandarin;복숭아|shaftoli;빵|non;커피|qahva;우유|sut;밥|guruch, ovqat;라면|ramen;치킨|tovuq;피자|pitsa;계란|tuxum;치즈|pishloq;케이크|tort;아이스크림|muzqaymoq;개|it;고양이|mushuk;새|qush;소|sigir;돼지|cho'chqa;말|ot;토끼|quyon;호랑이|yo'lbars;곰|ayiq;집|uy;학교|maktab;병원|kasalxona;은행|bank;버스|avtobus;비행기|samolyot;자동차|mashina;자전거|velosiped;배|kema;책|kitob;연필|qalam;가방|sumka;시계|soat;휴대폰|telefon;해|quyosh;달|oy;별|yulduz;비|yomg'ir;눈|qor;꽃|gul;나무|daraxt;산|tog';바다|dengiz;아기|chaqaloq;사랑|sevgi;선물|sovg'a;신발|poyabzal;옷|kiyim;안경|ko'zoynak;열쇠|kalit;돈|pul;음악|musiqa;모자|qalpoq;우산|soyabon;침대|karavot;의자|stul;문|eshik;창문|deraza`);
+const NUMS=W(`일|1;이|2;삼|3;사|4;오|5;육|6;칠|7;팔|8;구|9;십|10;십일|11;십오|15;이십|20;이십삼|23;삼십|30;사십오|45;오십|50;육십|60;칠십칠|77;팔십|80;구십구|99;백|100;이백|200;삼백오십|350;천|1000;이천|2000;오천|5000;만|10000;삼만|30000;하나|1;둘|2;셋|3;넷|4;다섯|5;여섯|6;일곱|7;여덟|8;아홉|9;열|10;열하나|11;스물|20;서른|30;마흔|40;쉰|50`);
+const GREET=W(`안녕하세요|Salom;감사합니다|Rahmat;고마워요|Rahmat (samimiy);미안합니다|Kechirasiz (uzr);죄송합니다|Uzr so'rayman (rasmiy);안녕히 가세요|Xayr (ketayotganga);안녕히 계세요|Xayr (qolayotganga);네|Ha;아니요|Yo'q;괜찮아요|Hechqisi yo'q;처음 뵙겠습니다|Tanishganimdan xursandman;만나서 반갑습니다|Tanishganimdan xursandman;잘 먹겠습니다|Yoqimli ishtaha (ovqat oldidan);잘 먹었습니다|Rahmat, mazali edi;생일 축하해요|Tug'ilgan kuning muborak;사랑해요|Sevaman;화이팅!|Olg'a! Omad!;얼마예요?|Qancha turadi?;몰라요|Bilmayman;알겠습니다|Tushundim;잠깐만요|Bir daqiqa;실례합니다|Kechirasiz (murojaat);여보세요|Allo;수고하셨습니다|Charchamang;잘 자요|Xayrli tun;좋은 아침이에요|Xayrli tong;다음에 봐요|Keyingi safar ko'rishguncha;축하해요|Tabriklayman;새해 복 많이 받으세요|Yangi yilingiz bilan;괜찮으세요?|Yaxshimisiz?;이름이 뭐예요?|Ismingiz nima?;어디에서 왔어요?|Qayerdan keldingiz?;도와주세요|Yordam bering;천천히 말해 주세요|Sekinroq gapiring;다시 한번 말해 주세요|Yana bir bor ayting`);
+const V_BEG=W(`학교|maktab;학생|o'quvchi;선생님|o'qituvchi;친구|do'st;가족|oila;어머니|ona;아버지|ota;형|aka (o'g'il uchun);언니|opa (qiz uchun);동생|uka/singil;할머니|buvi;할아버지|bobo;남편|er;아내|xotin;아이|bola;사람|odam;이름|ism;나이|yosh;물|suv;밥|ovqat, guruch;빵|non;고기|go'sht;생선|baliq;채소|sabzavot;과일|meva;사과|olma;우유|sut;차|choy / mashina;술|ichimlik (alkogol);책|kitob;공책|daftar;연필|qalam;가방|sumka;시계|soat;의자|stul;책상|parta, stol;방|xona;집|uy;문|eshik;병원|kasalxona;약국|dorixona;시장|bozor;식당|oshxona, restoran;은행|bank;우체국|pochta;도서관|kutubxona;공원|bog';회사|kompaniya;지하철|metro;버스|avtobus;역|bekat;공항|aeroport;길|yo'l;바다|dengiz;산|tog';강|daryo;날씨|ob-havo;오늘|bugun;내일|ertaga;어제|kecha;아침|ertalab;점심|tushlik;저녁|kechqurun;밤|tun;주말|dam olish kunlari;시간|vaqt;월요일|dushanba;금요일|juma;봄|bahor;여름|yoz;가을|kuz;겨울|qish;가다|bormoq;오다|kelmoq;먹다|yemoq;마시다|ichmoq;보다|ko'rmoq;듣다|eshitmoq;읽다|o'qimoq;쓰다|yozmoq;말하다|gapirmoq;자다|uxlamoq;일어나다|turmoq;앉다|o'tirmoq;사다|sotib olmoq;팔다|sotmoq;만나다|uchrashmoq;배우다|o'rganmoq;가르치다|o'rgatmoq;일하다|ishlamoq;쉬다|dam olmoq;좋아하다|yaxshi ko'rmoq;살다|yashamoq;알다|bilmoq;주다|bermoq;좋다|yaxshi;나쁘다|yomon;크다|katta;작다|kichik;많다|ko'p;적다|oz;길다|uzun;짧다|qisqa;비싸다|qimmat;싸다|arzon;맛있다|mazali;재미있다|qiziqarli;예쁘다|chiroyli;덥다|issiq;춥다|sovuq;바쁘다|band;아프다|og'rimoq, kasal;피곤하다|charchagan;행복하다|baxtli;빨리|tez;천천히|sekin;아주|juda;조금|ozgina;같이|birga;지금|hozir;다시|yana`);
+const V_MID=W(`약속|va'da, uchrashuv;여행|sayohat;취미|qiziqish;운동|sport;회의|majlis;직업|kasb;경험|tajriba;문화|madaniyat;소식|xabar;계획|reja;기분|kayfiyat;생각|fikr;이유|sabab;방법|usul;문제|muammo;대답|javob;질문|savol;경치|manzara;모임|yig'in;행사|tadbir;축제|festival;전시회|ko'rgazma;공연|konsert, chiqish;영수증|chek;교환|almashtirish;환불|pulni qaytarish;예약|bron;주문|buyurtma;배달|yetkazib berish;택배|posilka;사용법|foydalanish usuli;고장|nosozlik;실수|xato;성공|muvaffaqiyat;실패|muvaffaqiyatsizlik;준비하다|tayyorlanmoq;연습하다|mashq qilmoq;부탁하다|iltimos qilmoq;결정하다|qaror qilmoq;기억하다|eslamoq;잊어버리다|unutmoq;도착하다|yetib kelmoq;출발하다|jo'namoq;예약하다|bron qilmoq;고치다|tuzatmoq;걱정하다|xavotirlanmoq;초대하다|taklif qilmoq;소개하다|tanishtirmoq;설명하다|tushuntirmoq;이해하다|tushunmoq;찾다|qidirmoq, topmoq;잃어버리다|yo'qotmoq;빌리다|qarzga olmoq;돌려주다|qaytarib bermoq;바꾸다|almashtirmoq;늦다|kechikmoq;모르다|bilmaslik;다니다|qatnamoq;이사하다|ko'chib o'tmoq;졸업하다|bitirmoq;입학하다|o'qishga kirmoq;취직하다|ishga joylashmoq;결혼하다|turmush qurmoq;참석하다|qatnashmoq;신청하다|ariza bermoq;확인하다|tekshirmoq;계속하다|davom ettirmoq;포기하다|voz kechmoq;궁금하다|qiziq (bilgim keladi);피곤하다|charchagan;복잡하다|murakkab, gavjum;조용하다|tinch;시끄럽다|shovqinli;편리하다|qulay;불편하다|noqulay;중요하다|muhim;유명하다|mashhur;친절하다|mehribon;깨끗하다|toza;더럽다|iflos;무섭다|qo'rqinchli;부럽다|havas qilmoq;반갑다|xursand (ko'rishganda);섭섭하다|ranjigan;갑자기|to'satdan;벌써|allaqachon;아직|hali;자주|tez-tez;가끔|ba'zan;보통|odatda;특히|ayniqsa;혼자|yolg'iz;열심히|tirishqoqlik bilan;먼저|avval;나중에|keyinroq;거의|deyarli;꼭|albatta;정말|rostdan;아마|ehtimol;별로|unchalik;서로|bir-birini;직접|o'zi bevosita`);
+const V_ADV=W(`경제|iqtisod;환경|atrof-muhit;사회|jamiyat;교육|ta'lim;기술|texnologiya;인공지능|sun'iy intellekt;고령화|aholining qarishi;저출산|tug'ilishning kamayishi;취업|ishga kirish;실업|ishsizlik;창업|biznes ochish;소비|iste'mol;물가|narxlar;재활용|qayta ishlash;기후 변화|iqlim o'zgarishi;온실가스|issiqxona gazi;미세 먼지|mayda chang;차별|kamsitish;평등|tenglik;복지|ijtimoiy ta'minot;갈등|ziddiyat;배려|g'amxo'rlik;전통|an'ana;유산|meros;여론|jamoatchilik fikri;정책|siyosat;제도|tizim, tartib;규제|cheklov;혜택|imtiyoz;부담|yuk, og'irlik;현상|hodisa;원인|sabab;결과|natija;영향|ta'sir;효과|samara;역할|rol;가치|qadr, qiymat;관점|nuqtai nazar;태도|munosabat;능력|qobiliyat;잠재력|salohiyat;자원|resurs;생태계|ekotizim;멸종|yo'qolib ketish;개발|rivojlantirish;보존|saqlash;증가하다|oshmoq;감소하다|kamaymoq;해결하다|hal qilmoq;예방하다|oldini olmoq;극복하다|yengib o'tmoq;의존하다|qaram bo'lmoq;발달하다|rivojlanmoq;비판하다|tanqid qilmoq;강조하다|ta'kidlamoq;우려하다|xavotirlanmoq;주장하다|da'vo qilmoq;제안하다|taklif qilmoq;촉구하다|talab qilmoq;지적하다|ko'rsatib o'tmoq;인정하다|tan olmoq;반대하다|qarshi chiqmoq;지원하다|qo'llab-quvvatlamoq;도입하다|joriy etmoq;확산되다|tarqalmoq;악화되다|yomonlashmoq;개선하다|yaxshilamoq;보완하다|to'ldirmoq;활용하다|foydalanmoq;차지하다|egallamoq;발생하다|yuz bermoq;초래하다|keltirib chiqarmoq;유지하다|saqlab qolmoq;효율적|samarali;긍정적|ijobiy;부정적|salbiy;구체적|aniq;객관적|xolis;적극적|faol;지속적|barqaror;일시적|vaqtinchalik;꾸준히|muttasil;급격히|keskin;점차|asta-sekin;뿌듯하다|faxrlanmoq;서운하다|xafa bo'lmoq;뭉클하다|ta'sirlanmoq;허전하다|bo'shliq his qilmoq;막막하다|yo'lini topolmaslik;억울하다|nohaqlikdan ranjimoq;홀가분하다|yengil tortmoq;면역력|immunitet;경쟁력|raqobatbardoshlik;자신감|o'ziga ishonch;일회용품|bir martalik buyum;대중교통|jamoat transporti;1인 가구|yolg'iz yashovchi oila;재택근무|uydan ishlash;디지털 소외|raqamli tengsizlik;가짜 뉴스|soxta yangilik`);
+const CONJ=W(`가다|가요;오다|와요;먹다|먹어요;마시다|마셔요;보다|봐요;하다|해요;읽다|읽어요;자다|자요;배우다|배워요;만나다|만나요;듣다|들어요;쓰다|써요;살다|살아요;춥다|추워요;덥다|더워요;예쁘다|예뻐요;바쁘다|바빠요;좋다|좋아요;있다|있어요;공부하다|공부해요;앉다|앉아요;받다|받아요;주다|줘요;기다리다|기다려요;가르치다|가르쳐요;걷다|걸어요;알다|알아요;만들다|만들어요;크다|커요;아프다|아파요;모르다|몰라요;빠르다|빨라요;부르다|불러요;돕다|도와요;쉽다|쉬워요;어렵다|어려워요;짓다|지어요;낫다|나아요;입다|입어요;닫다|닫아요`);
+const PART=[['저(  ) 학생이에요.','는',['는','를','에서','에게']],['사과(  ) 먹어요.','를',['를','는','에','와']],['학교(  ) 가요.','에',['에','에서','를','이']],['도서관(  ) 공부해요.','에서',['에서','에','을','과']],['친구(  ) 전화해요.','에게',['에게','에서','를','이']],['날씨(  ) 좋아요.','가',['가','를','에','에게']],['빵(  ) 우유를 샀어요.','과',['과','에','는','에서']],['지하철(  ) 회사에 가요.','로',['로','에','를','가']],['아침 7시(  ) 일어나요.','에',['에','에서','을','로']],['한국어(  ) 배워요.','를',['를','이','에','와']],['동생(  ) 선물을 줬어요.','에게',['에게','에서','이','을']],['집(  ) 학교까지 걸어가요.','에서',['에서','에','를','가']],['저(  ) 사과를 좋아해요.','는',['는','에','를','로']],['형(  ) 키가 커요.','은',['은','을','에','에서']],['커피(  ) 주세요.','를',['를','이','에','로']],['친구(  ) 같이 영화를 봤어요.','와',['와','를','에','로']],['버스(  ) 타요.','를',['를','에','가','와']],['부산(  ) 서울까지 KTX로 가요.','에서',['에서','에','을','가']],['연필(  ) 써요.','로',['로','를','에','이']],['어머니(  ) 요리를 하세요.','께서',['께서','에게','를','에서']],['시간(  ) 없어요.','이',['이','을','에','와']],['물(  ) 마시고 싶어요.','을',['을','이','에','로']]];
+const ANT=W(`크다|작다;많다|적다;덥다|춥다;길다|짧다;비싸다|싸다;쉽다|어렵다;가다|오다;열다|닫다;좋다|나쁘다;빠르다|느리다;무겁다|가볍다;밝다|어둡다;높다|낮다;넓다|좁다;시작하다|끝나다;입다|벗다;웃다|울다;이기다|지다;사다|팔다;주다|받다;앉다|서다;켜다|끄다;늘다|줄다;깨끗하다|더럽다;조용하다|시끄럽다;두껍다|얇다;멀다|가깝다;젊다|늙다;부지런하다|게으르다;출발하다|도착하다;기쁘다|슬프다;증가하다|감소하다;긍정적|부정적;성공|실패;찬성|반대`);
+const S_BEG=W(`저는 학생이에요|Men o'quvchiman;이것은 책이에요|Bu kitob;물을 마셔요|Suv ichaman;학교에 가요|Maktabga boraman;친구를 만나요|Do'stim bilan uchrashaman;사과가 맛있어요|Olma mazali;오늘 날씨가 좋아요|Bugun ob-havo yaxshi;저는 한국어를 배워요|Men koreys tilini o'rganaman;집에 고양이가 있어요|Uyda mushuk bor;아침에 빵을 먹어요|Ertalab non yeyman;동생은 키가 커요|Ukam bo'yi baland;지금 시간이 없어요|Hozir vaqtim yo'q;이 가방은 비싸요|Bu sumka qimmat;저는 커피를 좋아해요|Men qahvani yaxshi ko'raman;내일 시장에 가요|Ertaga bozorga boraman;우리 가족은 네 명이에요|Oilamiz to'rt kishi;도서관이 조용해요|Kutubxona tinch;버스를 타요|Avtobusga chiqaman;친구에게 전화해요|Do'stimga qo'ng'iroq qilaman;어머니가 요리를 해요|Onam ovqat pishiryapti`);
+const S_MID=W(`친구와 같이 밥을 먹었어요|Do'stim bilan birga ovqat yedim;내일 시장에 갈 거예요|Ertaga bozorga boraman;도서관에서 책을 읽어요|Kutubxonada kitob o'qiyman;지하철로 회사에 가요|Metroda ishga boraman;주말에 가족과 여행했어요|Dam olishda oilam bilan sayohat qildim;비가 와서 집에 있었어요|Yomg'ir yoqqani uchun uyda qoldim;한국 음식을 먹어 보고 싶어요|Koreys taomini tatib ko'rmoqchiman;시간이 있으면 같이 영화를 봐요|Vaqt bo'lsa birga kino ko'raylik;저녁을 먹은 후에 산책해요|Kechki ovqatdan keyin sayr qilaman;한국어 공부가 재미있지만 어려워요|Koreys tili qiziqarli, lekin qiyin;생일 선물을 사러 백화점에 갔어요|Tug'ilgan kun sovg'asini olgani do'konga bordim;숙제를 다 하고 나서 게임을 해요|Uy vazifasini tugatib, o'yin o'ynayman;감기에 걸려서 병원에 갔어요|Shamollab kasalxonaga bordim;이 옷을 입어 봐도 돼요?|Bu kiyimni kiyib ko'rsam bo'ladimi?;내일 비가 올 것 같아요|Ertaga yomg'ir yog'adiganga o'xshaydi;제 취미는 사진을 찍는 거예요|Mening qiziqishim — suratga olish;늦어서 죄송합니다|Kechikkanim uchun uzr;한국에 가 본 적이 있어요?|Koreyaga borganmisiz?;운동을 하기 전에 물을 마셔요|Sportdan oldin suv ichaman;주말에는 보통 집에서 쉬어요|Dam olish kunlari odatda uyda dam olaman`);
+const S_ADV=W(`비가 오는 바람에 늦었어요|Yomg'ir yog'ib qolgani uchun kechikdim;열심히 공부한 덕분에 합격했어요|Qattiq o'qiganim sharofati bilan o'tdim;연습하면 할수록 실력이 늘어요|Mashq qilgan sari mahorat oshadi;환경을 보호하기 위해 노력해야 한다|Atrof-muhitni himoya qilish uchun harakat qilish kerak;처음에는 어렵기 마련이다|Boshida qiyin bo'lishi tabiiy;그 사람이 거짓말을 할 리가 없다|U odam yolg'on gapirishi mumkin emas;1인 가구가 꾸준히 증가하고 있다|Yolg'iz yashovchi oilalar muttasil ko'paymoqda;일회용품 사용을 줄여야 한다|Bir martalik buyumlarni kamaytirish kerak;시험 준비를 하느라고 잠을 못 잤다|Imtihonga tayyorlanib uxlay olmadim;인공지능 기술이 빠르게 발달하고 있다|Sun'iy intellekt texnologiyasi tez rivojlanmoqda;건강을 위해 꾸준히 운동하는 것이 좋다|Sog'liq uchun muntazam sport qilish yaxshi;이 문제를 해결하려면 정부의 지원이 필요하다|Bu muammoni hal qilish uchun davlat yordami kerak;그는 아무것도 모르는 척했다|U hech narsa bilmagandek o'zini tutdi;문을 열어 놓은 채로 잠이 들었다|Eshikni ochiq qoldirgancha uxlab qoldim;물가가 오르면서 소비가 줄어들었다|Narxlar oshishi bilan iste'mol kamaydi;이러한 변화의 원인은 고령화 때문이다|Bu o'zgarishning sababi aholining qarishidir;다른 사람의 의견을 존중해야 한다|Boshqalarning fikrini hurmat qilish kerak;실패를 두려워하지 않는 태도가 중요하다|Muvaffaqiyatsizlikdan qo'rqmaslik muhim`);
+const IDIOM=W(`발이 넓다|tanishlari ko'p;손이 크다|saxiy, ko'p qiladi;눈치가 빠르다|vaziyatni tez sezadi;귀가 얇다|gapga tez ishonadi;입이 무겁다|sir saqlaydi;입이 가볍다|gap tashiydi;눈이 높다|talabchan;손을 떼다|ishni tashlamoq;발을 동동 구르다|qattiq xavotirlanmoq;귀를 기울이다|diqqat bilan tinglamoq;마음을 먹다|qaror qilmoq;눈코 뜰 새 없다|juda band;손에 땀을 쥐다|hayajonlanmoq;고개를 숙이다|bosh egmoq, tan olmoq;머리를 맞대다|birga maslahatlashmoq;발목을 잡다|to'sqinlik qilmoq;어깨가 무겁다|mas'uliyat og'ir;간이 크다|jasur;배가 아프다|hasad qilmoq;하늘의 별 따기|juda qiyin ish;식은 죽 먹기|juda oson ish;그림의 떡|ko'z ko'radi, qo'l yetmas;밑 빠진 독에 물 붓기|befoyda mehnat;티끌 모아 태산|oz-ozdan ko'p bo'lur;소 잃고 외양간 고친다|kech qolgan chora;원숭이도 나무에서 떨어진다|ustasi ham xato qiladi;빈 수레가 요란하다|bo'sh idish ko'p jaranglaydi;가는 말이 고와야 오는 말이 곱다|yaxshi gapga yaxshi javob;백지장도 맞들면 낫다|birga qilsa osonroq;낮말은 새가 듣고 밤말은 쥐가 듣는다|devorning ham qulog'i bor;시작이 반이다|boshlash — yarim ish;금강산도 식후경|avval ovqat, keyin tomosha`);
+const HEAD=W(`수출 '훨훨'|eksport tez o'smoqda;물가 '고공 행진'|narxlar to'xtovsiz yuqori;매출 '곤두박질'|savdo keskin tushdi;경제 '빨간불'|iqtisodda xavf belgisi;취업률 '제자리걸음'|ishga kirish o'zgarmayapti;소비 '꽁꽁'|iste'mol muzlab qoldi;관광객 '발길' 이어져|sayyohlar oqimi davom etmoqda;성장세 '주춤'|o'sish sekinlashdi;서민 '숨통'|oddiy xalq yengil tortdi;청년 창업 '봇물'|yosh tadbirkorlar ko'paydi;경기 회복 '청신호'|tiklanishda yaxshi belgi;한국 영화 '날개' 달다|koreys kinosi ravnaq topmoqda;집값 '들썩'|uy narxi qo'zg'aldi;출산율 '바닥'|tug'ilish eng past darajada;수출 '먹구름'|eksportda xavf bulutlari;중고 거래 '쑥쑥'|ikkinchi qo'l savdo tez o'smoqda;관객 '썰물'|tomoshabinlar kamaydi;전통시장 '활기'|bozorlar jonlandi;채솟값 '껑충'|sabzavot narxi sakrab oshdi;공연계 '훈풍'|konsert sohasida iliq shamol`);
+const GRAPH=W(`증가하다|oshmoq ↑;감소하다|kamaymoq ↓;급증하다|keskin oshmoq ↑↑;급감하다|keskin kamaymoq ↓↓;꾸준히|muttasil;소폭|ozgina;2배 늘다|2 baravar oshmoq;절반을 차지하다|yarmini tashkil etmoq;그 뒤를 잇다|undan keyin turmoq;가장 높게 나타나다|eng yuqori bo'lmoq;원인으로는 ~을 들 수 있다|sabab sifatida ... ko'rsatish mumkin;~할 것으로 예상된다|... deb kutilmoqda;조사한 결과|tadqiqot natijasida;~에 비해|... ga nisbatan;~로 나타났다|... ekani ma'lum bo'ldi;반면에|aksincha`);
 const T1=[
  ['저는 매일 아침 공원(   ) 운동을 해요.',['에서','에게','을','이'],'Joy + harakat → 에서'],
  ['친구 선물을 (   ) 백화점에 갔어요.',['사러','사서','사면','사고'],'Maqsad bilan borish → -(으)러 가다'],
  ['비가 (   ) 우산을 가지고 가세요.',['오니까','와서','오고','오지만'],'Buyruq gapdan oldin sabab → -(으)니까'],
  ['어제 영화를 (   ).',['봤어요','봐요','볼 거예요','보세요'],'어제 → o\'tgan zamon'],
  ['한국에 가고 (   ).',['싶어요','있어요','주세요','봐요'],'Istak → -고 싶다'],
- ['사과가 맛있습니다. 바나나도 맛있습니다. — 무엇에 대해 말하고 있습니까?',['과일','날씨','가족','직업'],'사과, 바나나 → mevalar'],
- ['저는 서울에 삽니다. 동생은 부산에 삽니다. — 무엇에 대한 내용입니까?',['장소','나이','취미','음식'],'Yashash joyi → 장소'],
+ ['사과가 맛있습니다. 바나나도 맛있습니다. — 무엇에 대한 이야기입니까?',['과일','날씨','가족','직업'],'Mevalar'],
+ ['저는 서울에 삽니다. 동생은 부산에 삽니다. — 무엇에 대한 이야기입니까?',['장소','나이','취미','음식'],'Yashash joyi'],
  ['가: 학생이에요? 나: (   )',['네, 학생이에요','네, 학생이 없어요','아니요, 학생이에요','네, 학생을 좋아해요'],'Savolga mos javob'],
  ['가: 이 가방 얼마예요? 나: (   )',['만 원이에요','가방이에요','좋아요','두 개예요'],'얼마 → narx'],
  ['내일은 시험이 있어서 일찍 (   ) 해요.',['자야','자고','자서','자면'],'Majburiyat → -아/어야 하다'],
- ['"고맙습니다"와 같은 뜻은?',['감사합니다','미안합니다','안녕하세요','괜찮습니다'],'Rahmat'],
  ['날씨가 (   ) 창문을 열었어요.',['더워서','더우면','덥지만','덥고'],'Sabab → -아/어서'],
- ['저는 커피를 (   ) 차를 마셔요.',['안 마시고','마시고','마셔서','마시면'],'안 + -고'],
- ['밥을 먹기 (   ) 손을 씻어요.',['전에','후에','때문에','위해'],'Ovqatdan oldin → -기 전에'],
- ['"병원"에서 일하는 사람은?',['의사','요리사','운전기사','가수'],'Shifokor']];
+ ['밥을 먹기 (   ) 손을 씻어요.',['전에','후에','때문에','위해'],'-기 전에'],
+ ['"병원"에서 일하는 사람은?',['의사','요리사','운전기사','가수'],'Shifokor'],
+ ['저는 노래를 (   ) 수 있어요.',['부를','부르는','부르고','불러서'],'-(으)ㄹ 수 있다'],
+ ['주말에 같이 영화를 (   )?',['볼까요','봤어요','보세요','봐서'],'Taklif → -(으)ㄹ까요?'],
+ ['커피를 마시(   ) 책을 읽어요.',['면서','지만','어서','니까'],'Bir vaqtda → -(으)면서'],
+ ['이 옷을 입어 (   ) 돼요?',['봐도','보면','보고','봐서'],'Ruxsat → -아/어도 되다'],
+ ['한국어를 배운 (   ) 1년이 됐어요.',['지','후','때','전'],'-(으)ㄴ 지 (vaqt o\'tdi)'],
+ ['가: 어디에 가요? 나: (   )',['은행에 가요','은행이에요','내일 가요','혼자 가요'],'어디 → joy'],
+ ['피곤해서 오늘은 집에서 (   ) 싶어요.',['쉬고','쉬어서','쉬면','쉬니까'],'-고 싶다'],
+ ['동생은 저(   ) 키가 더 커요.',['보다','처럼','하고','에게'],'Qiyoslash → 보다'],
+ ['시험을 잘 (   ) 열심히 공부했어요.',['보려고','봐서','보면','보고'],'Niyat → -(으)려고'],
+ ['길이 막히니까 지하철을 (   ).',['타세요','탔어요','타서','타면'],'-(으)니까 → buyruq/maslahat'],
+ ['"감사합니다"와 같은 뜻은?',['고맙습니다','미안합니다','반갑습니다','괜찮습니다'],'Rahmat']];
 const T2=[
  ['갑자기 비가 (   ) 옷이 다 젖었다.',['오는 바람에','오도록','오더라도','오려고'],'Kutilmagan sabab → -는 바람에'],
  ['연습하면 (   ) 실력이 는다.',['할수록','하더니','하자마자','하느라고'],'-(으)면 -(으)ㄹ수록'],
  ['그가 약속을 잊었을 (   ). 어제도 확인했으니까.',['리가 없다','뻔했다','만하다','셈이다'],'-(으)ㄹ 리가 없다'],
  ['집에 [도착하자마자] 잠이 들었다. — 비슷한 표현은?',['도착하는 대로','도착하더라도','도착하는 바람에','도착하기 전에'],'-자마자 ≈ -는 대로'],
- ['시험 공부를 (   ) 친구를 만날 시간이 없다.',['하느라고','하더라도','하다가','하자마자'],'Band bo\'lish → -느라고'],
+ ['시험 공부를 (   ) 친구를 만날 시간이 없다.',['하느라고','하더라도','하다가','하자마자'],'-느라고'],
  ['열심히 준비했으니 [합격한 것이나 마찬가지다].',['합격한 셈이다','합격할 뻔했다','합격할 리가 없다','합격하곤 했다'],'-(으)ㄴ 셈이다'],
- ['쓰기 53·54번에서 써야 하는 문체는?',['-다 (한다체)','-요','-습니다','반말'],'53–54 → -다 uslubi'],
- ['"증가하다"와 반대 의미는?',['감소하다','상승하다','늘어나다','발달하다'],'Oshmoq ↔ kamaymoq'],
- ['"흔히 …라고 생각한다. 그러나 …" — 답은 어디에 있을까?',['그러나 뒤','첫 문장','흔히 앞','알 수 없다'],'Haqiqat 그러나 dan keyin'],
- ['순서 배열에서 첫 문장이 될 수 없는 것은?',['그래서로 시작하는 문장','한 청년이…로 시작하는 문장','최근…로 시작하는 문장','주제를 말하는 문장'],'Bog\'lovchi bilan boshlangan gap birinchi bo\'lmaydi'],
- ['처음에는 누구나 실수를 (   ).',['하기 마련이다','할 리가 없다','할 뻔했다','하는 척한다'],'Tabiiy hol → -기 마련이다'],
- ['밑줄 친 부분의 심정: "나는 [아무 말 없이 한참 동안 그 사진을 바라보았다]."',['그립고 뭉클하다','신나고 즐겁다','화가 나다','귀찮다'],'Jim qolib uzoq qarash → sog\'inch, ta\'sirlanish']];
-// listening (TTS): [spoken, question (uz), options(correct first)]
-const L1=[['학생이에요?','Savolga mos javob',['네, 학생이에요.','네, 학교예요.','아니요, 학생이에요.','네, 공부해요.']],['사과가 있어요?','Savolga mos javob',['네, 사과가 있어요.','네, 사과예요.','아니요, 사과가 맛있어요.','네, 사과를 좋아해요.']],['어디에 가요?','Savolga mos javob',['시장에 가요.','친구를 만나요.','내일 가요.','버스로 가요.']],['언제 만나요?','Savolga mos javob',['토요일에 만나요.','친구를 만나요.','학교에서 만나요.','같이 만나요.']],['무엇을 먹어요?','Savolga mos javob',['비빔밥을 먹어요.','식당에서 먹어요.','친구와 먹어요.','맛있게 먹어요.']],['처음 뵙겠습니다.','Keyingi gap',['네, 반갑습니다.','네, 고맙습니다.','네, 미안합니다.','안녕히 가세요.']],['생일 축하해요.','Keyingi gap',['고마워요.','괜찮아요.','미안해요.','처음 뵙겠습니다.']],['이 사과 얼마예요?','Keyingi gap',['천 원이에요.','사과예요.','맛있어요.','두 개 주세요.']]];
-const L2=[['내일 등산 가기로 한 거, 비가 온대요.','Keyingi gap',['그럼 다음 주로 미룰까요?','등산이 정말 좋았어요.','비가 와서 시원했어요.','등산화를 샀어요.']],['발표 준비를 아직 반도 못 했어요.','Keyingi gap',['제가 좀 도와줄까요?','발표가 끝났군요.','준비를 다 했네요.','발표를 들었어요.']],['저 이번에 장학금을 받게 됐어요.','Keyingi gap',['축하해요. 정말 잘됐네요.','다음에 다시 해 보세요.','장학금이 없군요.','저도 받았어요.']],['노트북이 갑자기 안 켜져요.','Keyingi gap',['충전기는 꽂아 보셨어요?','노트북을 샀어요.','화면이 밝아요.','노트북이 가벼워요.']],['회의 자료를 오늘까지 정리해 주세요.','Keyingi gap',['네, 퇴근 전까지 드리겠습니다.','회의가 끝났어요.','자료가 없어요.','어제 정리했어요.']],['이번 주말 캠핑에 침낭이 하나 부족해요.','Keyingi gap',['그럼 제가 하나 사 올게요.','캠핑이 즐거웠어요.','침낭이 따뜻해요.','텐트를 샀어요.']]];
-// ordering sets: correct order array
-const ORD1=[['저는 아침 7시에 일어나요.','그리고 세수를 해요.','그다음에 아침을 먹어요.','8시에 학교에 가요.'],['어제 친구와 시장에 갔어요.','시장에서 과일을 샀어요.','그리고 식당에서 밥을 먹었어요.','저녁에 집에 돌아왔어요.']];
-const ORD2=[['한 편의점 주인은 비 오는 날 우산 없이 뛰는 사람들을 보았다.','그래서 가게 앞에 무료 우산을 두었다.','처음에는 우산이 돌아오지 않을까 걱정했다.','이제 사람들은 우산을 빌려 갔다가 꼭 돌려준다.'],['많은 사람들이 낮잠을 게으름이라고 생각한다.','하지만 짧은 낮잠은 오후의 집중력을 높여 준다.','다만 30분 이상 자면 밤잠을 방해할 수 있다.','따라서 점심시간에 잠깐 눈을 붙이는 것이 좋다.'],['오래된 시장이 손님이 줄어 어려움을 겪었다.','이에 상인들은 저녁마다 야시장을 열었다.','그 결과 젊은 손님이 크게 늘었다.','지금은 지역의 명소가 되었다.']];
+ ['쓰기 53·54번에서 써야 하는 문체는?',['-다 (한다체)','-요','-습니다','반말'],'-다 uslubi'],
+ ['처음에는 누구나 실수를 (   ).',['하기 마련이다','할 리가 없다','할 뻔했다','하는 척한다'],'-기 마련이다'],
+ ['그는 다 알면서도 (   ).',['모르는 척했다','몰라야 했다','모르기 마련이다','모를 뻔했다'],'-는 척하다'],
+ ['조금만 늦었으면 비행기를 (   ).',['놓칠 뻔했다','놓치기로 했다','놓칠 리가 없다','놓치곤 했다'],'-(으)ㄹ 뻔하다'],
+ ['날씨가 추울 (   ) 옷을 두껍게 입어라.',['테니까','텐데도','뿐만 아니라','만큼'],'-(으)ㄹ 테니까'],
+ ['비가 [오더라도] 경기는 열린다. — 비슷한 표현은?',['와도','오니까','오면','와서'],'-더라도 ≈ -아/어도'],
+ ['그 식당은 맛있을 (   ) 가격도 싸다.',['뿐만 아니라','텐데','바람에','리가'],'-(으)ㄹ 뿐만 아니라'],
+ ['밑줄 친 부분의 심정: "[아무 말 없이 한참 동안 그 사진을 바라보았다]."',['그립고 뭉클하다','신나고 즐겁다','화가 나다','귀찮다'],'Jim qolib uzoq qarash'],
+ ['신문 제목 "물가 \'고공 행진\'"의 뜻은?',['물가가 계속 오르고 있다','물가가 내렸다','비행기 표가 비싸다','시장이 문을 닫았다'],'고공 행진'],
+ ['"흔히 …라고 생각한다. 그러나 …" — 필자의 생각은?',['그러나 뒤','첫 문장','흔히 앞','알 수 없다'],'Haqiqat 그러나 dan keyin'],
+ ['순서 배열에서 첫 문장이 될 수 없는 것은?',['그래서로 시작하는 문장','한 청년이…로 시작하는 문장','최근…로 시작하는 문장','주제를 말하는 문장'],'Bog\'lovchili gap birinchi emas'],
+ ['53번에서 쓰면 안 되는 것은?',['자신의 의견','그래프의 수치','변화의 원인','앞으로의 전망'],'53 — faqat tasvirlash'],
+ ['54번 글의 구성으로 알맞은 것은?',['서론-본론-결론 3단락','한 단락','대화문','목록 형식'],'3 savol = 3 xatboshi'],
+ ['"그는 손이 크다"의 뜻은?',['인심이 후하다','손이 아프다','키가 크다','일을 잘한다'],'손이 크다 = saxiy'],
+ ['회의 자료를 (   ) 팀장님께 보내 주세요.',['만드는 대로','만들더니','만드는 바람에','만들수록'],'-는 대로 (tayyor bo\'lishi bilan)'],
+ ['교통이 (   ) 이 동네에 사는 사람이 많다.',['편리해서인지','편리하더라도','편리할 뻔해서','편리하자마자'],'-아서인지 (taxminiy sabab)']];
+const L1=[['학생이에요?','Savolga mos javob',['네, 학생이에요.','네, 학교예요.','아니요, 학생이에요.','네, 공부해요.']],['사과가 있어요?','Savolga mos javob',['네, 사과가 있어요.','네, 사과예요.','아니요, 사과가 맛있어요.','네, 사과를 좋아해요.']],['어디에 가요?','Savolga mos javob',['시장에 가요.','친구를 만나요.','내일 가요.','버스로 가요.']],['언제 만나요?','Savolga mos javob',['토요일에 만나요.','친구를 만나요.','학교에서 만나요.','같이 만나요.']],['무엇을 먹어요?','Savolga mos javob',['비빔밥을 먹어요.','식당에서 먹어요.','친구와 먹어요.','맛있게 먹어요.']],['처음 뵙겠습니다.','Keyingi gap',['네, 반갑습니다.','네, 고맙습니다.','네, 미안합니다.','안녕히 가세요.']],['생일 축하해요.','Keyingi gap',['고마워요.','괜찮아요.','미안해요.','처음 뵙겠습니다.']],['이 사과 얼마예요?','Keyingi gap',['천 원이에요.','사과예요.','맛있어요.','두 개 주세요.']],['누구하고 살아요?','Savolga mos javob',['가족하고 살아요.','서울에 살아요.','혼자 가요.','집이에요.']],['몇 시에 일어나요?','Savolga mos javob',['일곱 시에 일어나요.','일곱 명이에요.','아침에 먹어요.','집에서 자요.']],['커피 좋아해요?','Savolga mos javob',['네, 좋아해요.','네, 커피예요.','아니요, 커피가 있어요.','네, 마셨어요.']],['늦어서 미안해요.','Keyingi gap',['괜찮아요.','축하해요.','반가워요.','잘 먹겠습니다.']],['주말에 뭐 했어요?','Savolga mos javob',['친구하고 영화를 봤어요.','주말이에요.','내일 할 거예요.','영화관이에요.']],['한국어 공부가 어때요?','Savolga mos javob',['재미있어요.','한국어예요.','공부해요.','책이 있어요.']]];
+const L2=[['내일 등산 가기로 한 거, 비가 온대요.','Keyingi gap',['그럼 다음 주로 미룰까요?','등산이 정말 좋았어요.','비가 와서 시원했어요.','등산화를 샀어요.']],['발표 준비를 아직 반도 못 했어요.','Keyingi gap',['제가 좀 도와줄까요?','발표가 끝났군요.','준비를 다 했네요.','발표를 들었어요.']],['저 이번에 장학금을 받게 됐어요.','Keyingi gap',['축하해요. 정말 잘됐네요.','다음에 다시 해 보세요.','장학금이 없군요.','저도 받았어요.']],['노트북이 갑자기 안 켜져요.','Keyingi gap',['충전기는 꽂아 보셨어요?','노트북을 샀어요.','화면이 밝아요.','노트북이 가벼워요.']],['회의 자료를 오늘까지 정리해 주세요.','Keyingi gap',['네, 퇴근 전까지 드리겠습니다.','회의가 끝났어요.','자료가 없어요.','어제 정리했어요.']],['이번 주말 캠핑에 침낭이 하나 부족해요.','Keyingi gap',['그럼 제가 하나 사 올게요.','캠핑이 즐거웠어요.','침낭이 따뜻해요.','텐트를 샀어요.']],['택배가 왔다는데 문 앞에 없어요.','Keyingi gap',['경비실에 한번 가 보세요.','택배를 보내 주세요.','문을 닫았어요.','택배가 무거워요.']],['요즘 잠을 잘 못 자요.','Keyingi gap',['자기 전에 휴대폰을 보지 마세요.','잠을 많이 자서 좋겠네요.','저도 일찍 일어나요.','침대를 샀어요.']],['이 근처에 약국이 있어요?','Keyingi gap',['저 은행 옆에 있어요.','약을 먹었어요.','약국이 커요.','아프지 마세요.']],['면접에서 너무 긴장했어요.','Keyingi gap',['너무 걱정하지 마세요. 잘될 거예요.','면접이 내일이군요.','면접관이 됐어요.','긴장하지 않았군요.']]];
+const ORD1=[['저는 아침 7시에 일어나요.','그리고 세수를 해요.','그다음에 아침을 먹어요.','8시에 학교에 가요.'],['어제 친구와 시장에 갔어요.','시장에서 과일을 샀어요.','그리고 식당에서 밥을 먹었어요.','저녁에 집에 돌아왔어요.'],['저는 한국어를 배워요.','처음에는 한글이 어려웠어요.','하지만 매일 연습했어요.','지금은 한국어 책을 읽을 수 있어요.'],['오늘은 동생 생일이에요.','그래서 케이크를 샀어요.','저녁에 가족이 모두 모였어요.','우리는 생일 노래를 불렀어요.'],['주말에 바다에 갔어요.','날씨가 아주 좋았어요.','바다에서 수영을 했어요.','저녁에는 생선을 먹었어요.']];
+const ORD2=[['한 편의점 주인은 비 오는 날 우산 없이 뛰는 사람들을 보았다.','그래서 가게 앞에 무료 우산을 두었다.','처음에는 우산이 돌아오지 않을까 걱정했다.','이제 사람들은 우산을 빌려 갔다가 꼭 돌려준다.'],['많은 사람들이 낮잠을 게으름이라고 생각한다.','하지만 짧은 낮잠은 오후의 집중력을 높여 준다.','다만 30분 이상 자면 밤잠을 방해할 수 있다.','따라서 점심시간에 잠깐 눈을 붙이는 것이 좋다.'],['오래된 시장이 손님이 줄어 어려움을 겪었다.','이에 상인들은 저녁마다 야시장을 열었다.','그 결과 젊은 손님이 크게 늘었다.','지금은 지역의 명소가 되었다.'],['한 빵집 주인은 매일 남은 빵을 버리는 것이 안타까웠다.','그래서 남은 빵으로 샌드위치를 만들어 싸게 팔았다.','처음에는 손님들이 꺼릴까 봐 걱정했다.','지금은 저녁마다 손님이 줄을 선다.'],['웃으면 복이 온다는 말에는 근거가 있다.','웃으면 스트레스를 줄이는 물질이 나온다.','또한 크게 웃으면 가벼운 운동 효과도 있다.','이처럼 웃음은 몸과 마음의 건강에 도움이 된다.'],['한 회사가 금요일 오후를 회의 없는 시간으로 정했다.','처음에는 일이 늦어질 것이라는 걱정이 많았다.','그러나 이 결정은 오히려 좋은 결과를 가져왔다.','직원들이 집중해서 일하면서 성과가 높아진 것이다.']];
 const DARE={
- b:['Koreyscha 1 dan 10 gacha sanang 🔢','Hangul unli harflarini doskaga yozing ✍️','Koreyscha 3 ta meva nomini ayting 🍎','"안녕하세요"ni 3 xil ohangda ayting 😄','O\'zingizni koreyscha tanishtiring: 저는 ○○이에요 🙋','"사랑해요"ni qo\'shiq qilib kuylang 🎤','Sinfdagi 3 ta narsani koreyscha nomlang 🏫','O\'z ismingizni Hangulda yozing ✏️'],
- m:['Kechagi kuningizni 3 ta gap bilan ayting 📝','Do\'stingizni koreyscha restoranga taklif qiling 🍜','30 soniyada 5 ta fe\'lni 해요 shaklida ayting ⏱','Koreyscha ob-havoni e\'lon qiling ☀️','Koreyscha 1 daqiqa do\'kon savdosini sahnalashtiring 🛒','"-고 싶어요" bilan 3 ta orzuyingizni ayting 🌟','Telefon qilib uchrashuv belgilashni sahnalashtiring 📞','Sevimli ovqatingiz retseptini koreyscha 3 gapda ayting 🍳'],
- a:['"-는 바람에" bilan gap tuzing 🌧','30 soniyada 3 ta frazeologizm ayting 🦶','Sun\'iy intellekt haqida 2 gap ayting 🤖','Bitta maqolni ayting va tushuntiring 📜','Sinfdoshingiz fikriga "동의합니다, 하지만…" deb javob bering 💬','Gazeta sarlavhasi o\'ylab toping: "○○ \'훨훨\'" 📰','Ekologiya haqida -아/어야 한다 bilan 2 gap 🌍','1 daqiqalik nutq: "Koreys tilini nega o\'rganyapman" 🎙'],
- t1:['TOPIK I: o\'zingizni 4 gap bilan tanishtiring 🙋','30 soniyada 10 ta ot ayting 🗂','"-아/어서" bilan sabab aytib bering 💡','Do\'stingizga yo\'l tushuntiring (오른쪽, 왼쪽) 🗺','"-(으)러 가요" bilan 2 gap ayting 🚶','Hafta kunlarini koreyscha ayting 📅'],
- t2:['53 uchun: grafikni 2 gap bilan tasvirlang 📈','54 uchun: mavzuga kirish gapini ayting ✍️','Bitta sarlavha iborasini tushuntiring 📰','"-기 마련이다" bilan gap tuzing 📚','"흔히 … 그러나 …" tuzilishida gap ayting 🔄','3 ta ijtimoiy mavzu so\'zi va ma\'nosi 🏛']};
+ b:['Koreyscha 1 dan 10 gacha sanang 🔢','Hangul unli harflarini doskaga yozing ✍️','Koreyscha 3 ta meva nomini ayting 🍎','"안녕하세요"ni 3 xil ohangda ayting 😄','O\'zingizni tanishtiring: 저는 ○○이에요 🙋','"사랑해요"ni qo\'shiq qilib kuylang 🎤','Sinfdagi 3 ta narsani koreyscha nomlang 🏫','O\'z ismingizni Hangulda yozing ✏️','5 ta hayvon nomini ayting 🐶','Koreyscha "rahmat"ning 2 xil shaklini ayting 🙏'],
+ m:['Kechagi kuningizni 3 gap bilan ayting 📝','Do\'stingizni restoranga taklif qiling 🍜','30 soniyada 5 ta fe\'lni 해요 shaklida ayting ⏱','Koreyscha ob-havoni e\'lon qiling ☀️','Do\'kon savdosini sahnalashtiring 🛒','"-고 싶어요" bilan 3 orzuyingizni ayting 🌟','Telefonda uchrashuv belgilang 📞','Sevimli ovqatingizni 3 gapda tasvirlang 🍳','Do\'stingizga yo\'l tushuntiring 🗺','"-(으)ㄹ 거예요" bilan ertangi rejangizni ayting 📅'],
+ a:['"-는 바람에" bilan gap tuzing 🌧','30 soniyada 3 ta frazeologizm ayting 🦶','Sun\'iy intellekt haqida 2 gap ayting 🤖','Bitta maqolni ayting va tushuntiring 📜','"동의합니다, 하지만…" deb javob bering 💬','Gazeta sarlavhasi o\'ylab toping: "○○ \'훨훨\'" 📰','Ekologiya haqida -아/어야 한다 bilan 2 gap 🌍','1 daqiqalik nutq: nega koreys tilini o\'rganyapman 🎙','"-기 마련이다" bilan gap tuzing 📚','Do\'stingiz fikriga qarshi dalil keltiring 🗣'],
+ t1:['O\'zingizni 4 gap bilan tanishtiring 🙋','30 soniyada 10 ta ot ayting 🗂','"-아/어서" bilan sabab ayting 💡','Yo\'l tushuntiring (오른쪽, 왼쪽) 🗺','"-(으)러 가요" bilan 2 gap 🚶','Hafta kunlarini ayting 📅','Oilangizni 3 gap bilan tanishtiring 👨‍👩‍👧','Narx so\'rash dialogini o\'ynang 💰'],
+ t2:['53: grafikni 2 gap bilan tasvirlang 📈','54: mavzuga kirish gapini ayting ✍️','Bitta sarlavha iborasini tushuntiring 📰','"-기 마련이다" bilan gap tuzing 📚','"흔히 … 그러나 …" tuzilishida gap 🔄','3 ta ijtimoiy mavzu so\'zi va ma\'nosi 🏛','"-(으)ㄹ 뿐만 아니라" bilan gap 🧩','54-mavzu: sun\'iy intellekt — 2 dalil ayting 🤖']};
+
+const KZ_SVG=`<svg viewBox="0 0 200 232" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="kzIris" cx="50%" cy="38%" r="62%"><stop offset="0" stop-color="#FFE08A"/><stop offset=".5" stop-color="#F59E1B"/><stop offset="1" stop-color="#B45309"/></radialGradient><linearGradient id="kzFur" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#959AAB"/><stop offset="1" stop-color="#6F7485"/></linearGradient></defs><g class="tail"><path d="M146 196 C188 192 198 156 180 140 C171 133 160 141 167 150 C176 161 169 177 144 181 Z" fill="url(#kzFur)" stroke="#454A5A" stroke-width="2.6" stroke-linejoin="round"/><path d="M172 146 C179 150 181 160 178 168" stroke="#5E6374" stroke-width="3" fill="none" stroke-linecap="round"/></g><ellipse cx="100" cy="184" rx="57" ry="42" fill="url(#kzFur)" stroke="#454A5A" stroke-width="2.6"/><ellipse cx="100" cy="192" rx="30" ry="25" fill="#C3C7D2"/><ellipse cx="77" cy="218" rx="16" ry="10.5" fill="#A6ABB8" stroke="#454A5A" stroke-width="2.6"/><ellipse cx="123" cy="218" rx="16" ry="10.5" fill="#A6ABB8" stroke="#454A5A" stroke-width="2.6"/><path d="M72 221 v-5 M78 222 v-6 M118 222 v-6 M124 221 v-5" stroke="#454A5A" stroke-width="1.8" stroke-linecap="round"/><path d="M56 143 Q100 163 144 143 L142 154 Q100 173 58 154 Z" fill="#D7263D" stroke="#9F1239" stroke-width="1.5"/><circle cx="100" cy="167" r="9.5" fill="#FBBF24" stroke="#B45309" stroke-width="1.6"/><text x="100" y="171.5" font-size="11" font-weight="900" text-anchor="middle" fill="#7C2D12" font-family="Arial,sans-serif">G</text><g class="headg"><path d="M100 30 C152 30 174 62 174 99 C174 138 141 153 100 153 C59 153 26 138 26 99 C26 62 48 30 100 30 Z" fill="url(#kzFur)" stroke="#454A5A" stroke-width="2.6"/><g class="ear l"><path d="M42 64 C36 40 50 28 72 33 C74 45 64 60 42 64 Z" fill="#848999" stroke="#454A5A" stroke-width="2.6" stroke-linejoin="round"/><path d="M49 57 C47 44 55 37 66 38 C65 46 59 53 49 57 Z" fill="#F0B3C0"/></g><g class="ear r"><path d="M158 64 C164 40 150 28 128 33 C126 45 136 60 158 64 Z" fill="#848999" stroke="#454A5A" stroke-width="2.6" stroke-linejoin="round"/><path d="M151 57 C153 44 145 37 134 38 C135 46 141 53 151 57 Z" fill="#F0B3C0"/></g><path d="M91 46 l3 12 M100 44 v14 M109 46 l-3 12" stroke="#5E6374" stroke-width="3.2" stroke-linecap="round"/><ellipse cx="100" cy="130" rx="33" ry="19" fill="#C3C7D2"/><g class="eye"><ellipse cx="68" cy="98" rx="19" ry="22.5" fill="#fff" stroke="#262A35" stroke-width="3"/><ellipse cx="68" cy="100" rx="16" ry="19.5" fill="url(#kzIris)"/><ellipse cx="68" cy="102" rx="8.5" ry="11.5" fill="#22140A"/><circle cx="61" cy="90" r="6.2" fill="#fff"/><circle cx="74" cy="110" r="2.8" fill="#fff"/><path d="M49.5 92 Q66 72 86.5 86" stroke="#262A35" stroke-width="4.2" fill="none" stroke-linecap="round"/><path d="M49.5 92 l-5 -4" stroke="#262A35" stroke-width="3" stroke-linecap="round"/></g><g class="eye"><ellipse cx="132" cy="98" rx="19" ry="22.5" fill="#fff" stroke="#262A35" stroke-width="3"/><ellipse cx="132" cy="100" rx="16" ry="19.5" fill="url(#kzIris)"/><ellipse cx="132" cy="102" rx="8.5" ry="11.5" fill="#22140A"/><circle cx="125" cy="90" r="6.2" fill="#fff"/><circle cx="138" cy="110" r="2.8" fill="#fff"/><path d="M113.5 86 Q134 72 150.5 92" stroke="#262A35" stroke-width="4.2" fill="none" stroke-linecap="round"/><path d="M150.5 92 l5 -4" stroke="#262A35" stroke-width="3" stroke-linecap="round"/></g><g class="hap"><path d="M51 103 Q68 82 85 103" stroke="#262A35" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M115 103 Q132 82 149 103" stroke="#262A35" stroke-width="5" fill="none" stroke-linecap="round"/></g><ellipse cx="48" cy="125" rx="11" ry="6" fill="#F9A8B8" opacity=".75"/><ellipse cx="152" cy="125" rx="11" ry="6" fill="#F9A8B8" opacity=".75"/><path d="M94.5 119 h11 l-5.5 6.5 z" fill="#EC8FA2" stroke="#262A35" stroke-width="1.6" stroke-linejoin="round"/><path d="M89 130 q5.5 6 11 0 q5.5 6 11 0" stroke="#262A35" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M64 126 L28 119 M64 131 L27 132 M136 126 L172 119 M136 131 L173 132" stroke="#F1F3F8" stroke-width="1.8" stroke-linecap="round"/><g class="tear"><path d="M58 119 q-5 9 0 13 q5 -4 0 -13z" fill="#7DD3FC" stroke="#0EA5E9" stroke-width="1"/><path d="M142 119 q-5 9 0 13 q5 -4 0 -13z" fill="#7DD3FC" stroke="#0EA5E9" stroke-width="1"/></g></g></svg>`;
+const KZ_TOP=c=>'<path d="M44 180 C46 152 70 142 100 142 C130 142 154 152 156 180 C158 202 150 219 100 223 C50 219 42 202 44 180 Z" fill="'+c+'" stroke="#454A5A" stroke-width="2.6"/>';
+const KZ_BELLY='<ellipse cx="100" cy="192" rx="30" ry="25" fill="#C3C7D2"/>',KZ_END='</g></svg>',KZ_COLLAR=/<path d="M56 143[\s\S]*?<\/text>/;
+const addHead=(s,x)=>s.slice(0,s.lastIndexOf(KZ_END))+x+KZ_END;
+const OUTFIT={
+ B:s=>s.replace(KZ_BELLY,KZ_BELLY+KZ_TOP('#D7263D')+'<path d="M78 146 L100 184 L122 146" stroke="#fff" stroke-width="8" fill="none" stroke-linejoin="round"/><path d="M100 184 q-15 6 -19 27 M100 184 q9 8 7 30" stroke="#1D4ED8" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="100" cy="184" r="5.5" fill="#1D4ED8"/>'+[49,133].map(x=>[[194,'#EF4444'],[200,'#FACC15'],[206,'#22C55E'],[212,'#3B82F6']].map(([y,c])=>'<path d="M'+x+' '+y+' h18" stroke="'+c+'" stroke-width="4.5"/>').join('')).join('')).replace(KZ_COLLAR,''),
+ C:s=>addHead(s.replace(KZ_BELLY,KZ_BELLY+KZ_TOP('#1E3A8A')+'<path d="M82 146 L100 188 L118 146 Z" fill="#fff"/><path d="M100 150 l-6 8 l6 28 l6 -28 z" fill="#D7263D"/><path d="M82 146 L92 176 M118 146 L108 176" stroke="#0F1E4D" stroke-width="2.5"/><rect x="118" y="186" width="20" height="13" rx="2" fill="#FBBF24"/><text x="128" y="196" font-size="7" font-weight="900" text-anchor="middle" fill="#7C2D12" font-family="Arial">GNS</text>').replace(KZ_COLLAR,''),
+   '<g fill="none" stroke="#1F2937" stroke-width="3"><circle cx="68" cy="99" r="26"/><circle cx="132" cy="99" r="26"/><path d="M94 95 q6 -6 12 0"/><path d="M42 94 L28 88 M158 94 L172 88"/></g>'),
+ D:s=>addHead(s.replace('<ellipse cx="77" cy="218"','<rect x="66" y="198" width="68" height="15" rx="7.5" fill="#FFF7E6" stroke="#B45309" stroke-width="2"/><rect x="96" y="196" width="8" height="19" fill="#D7263D"/><ellipse cx="77" cy="218"'),
+   '<path d="M70 42 v16 q30 13 60 0 v-16" fill="#1F2937" stroke="#111827" stroke-width="2"/><path d="M100 10 L166 32 L100 54 L34 32 Z" fill="#111827"/><circle cx="100" cy="32" r="3.5" fill="#FBBF24"/><path d="M100 32 L154 40 v28" stroke="#D7263D" stroke-width="3" fill="none"/><path d="M150 66 l4 10 l4 -10 z" fill="#D7263D"/>'),
+ F:s=>addHead(s,'<path d="M34 104 C26 30 174 30 166 104" stroke="#1D4ED8" stroke-width="9" fill="none" stroke-linecap="round"/><rect x="18" y="88" width="22" height="36" rx="10" fill="#D7263D" stroke="#9F1239" stroke-width="2"/><rect x="160" y="88" width="22" height="36" rx="10" fill="#D7263D" stroke="#9F1239" stroke-width="2"/><circle cx="29" cy="106" r="5" fill="#FCA5A5"/><circle cx="171" cy="106" r="5" fill="#FCA5A5"/><text x="176" y="58" font-size="20" fill="#1D4ED8">♪</text><text x="6" y="66" font-size="16" fill="#D7263D">♫</text>'),
+ W:s=>addHead(s.replace(KZ_BELLY,KZ_BELLY+KZ_TOP('#2563EB')+'<path d="M100 150 v70" stroke="#1E3A8A" stroke-width="2.5"/>'+[164,184,204].map(y=>'<circle cx="106" cy="'+y+'" r="3" fill="#FDE68A"/>').join('')+'<path d="M58 142 Q100 166 142 142 L146 156 Q100 182 54 156 Z" fill="#D7263D" stroke="#9F1239" stroke-width="2"/><path d="M70 150 l4 14 M86 156 l3 15 M114 156 l-3 15 M130 150 l-4 14" stroke="#fff" stroke-width="4"/><path d="M118 160 l8 50 l18 -4 l-10 -48 z" fill="#D7263D" stroke="#9F1239" stroke-width="2"/><path d="M121 176 l17 -4 M124 192 l17 -4" stroke="#fff" stroke-width="4"/><path d="M127 210 l2 8 M133 209 l2 8 M139 207 l2 8" stroke="#9F1239" stroke-width="2.5"/>').replace(KZ_COLLAR,''),
+   '<path d="M50 66 C50 18 150 18 150 66 Z" fill="#D7263D" stroke="#9F1239" stroke-width="2.5"/><path d="M66 44 l8 -4 l8 4 l8 -4 l8 4 l8 -4 l8 4 l8 -4 l8 4 l8 -4" stroke="#fff" stroke-width="3.5" fill="none"/><rect x="44" y="56" width="112" height="16" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/>'+[58,70,82,94,106,118,130,142].map(x=>'<path d="M'+x+' 59 v10" stroke="#CBD5E1" stroke-width="2"/>').join('')+'<circle cx="100" cy="18" r="11" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="2"/><text x="168" y="40" font-size="16" fill="#93C5FD">❄</text><text x="10" y="58" font-size="13" fill="#93C5FD">❄</text>'),
+ U:s=>addHead(s.replace(KZ_BELLY,KZ_BELLY+KZ_TOP('#1E3A8A')+[60,74,88,112,126,140].map((x,i)=>'<path d="M'+x+' 150 C'+(x-3)+' 175 '+(x+2)+' 200 '+x+' 220" stroke="'+['#16A34A','#F59E0B','#DB2777'][i%3]+'" stroke-width="5" fill="none" opacity=".9"/>').join('')+'<path d="M84 146 L100 196 L116 146 Z" fill="#fff"/><path d="M84 146 L100 196 M116 146 L100 196" stroke="#FBBF24" stroke-width="4"/><rect x="50" y="196" width="100" height="10" rx="4" fill="#15803D"/><path d="M96 206 l-6 16 M104 206 l6 16" stroke="#15803D" stroke-width="5" stroke-linecap="round"/>').replace(KZ_COLLAR,''),
+   '<path d="M62 62 L68 30 Q100 22 132 30 L138 62 Q100 70 62 62 Z" fill="#111827" stroke="#000" stroke-width="2"/><path d="M68 30 Q100 22 132 30" stroke="#fff" stroke-width="2" fill="none"/>'+[[78,46],[100,44],[122,46]].map(([x,y])=>'<path d="M'+x+' '+(y-9)+' C'+(x+8)+' '+(y-4)+' '+(x+7)+' '+(y+6)+' '+(x-1)+' '+(y+10)+' C'+(x+2)+' '+(y+3)+' '+(x-4)+' '+(y-3)+' '+x+' '+(y-9)+' Z" fill="#fff"/>').join('')+'<path d="M63 60 Q100 68 137 60" stroke="#fff" stroke-width="2.5" fill="none" stroke-dasharray="4 3"/>'),
+ S:s=>s.replace(KZ_BELLY,KZ_BELLY+KZ_TOP('#14532D')+'<path d="M80 146 L100 190 L120 146 Z" fill="#fff"/><path d="M80 146 L94 182 M120 146 L106 182" stroke="#052E16" stroke-width="2.5"/><path d="M90 152 l10 6 l10 -6 l-4 10 l-6 -3 l-6 3 z" fill="#B91C1C"/><path d="M96 160 l-3 18 l7 6 l7 -6 l-3 -18 z" fill="#B91C1C"/><path d="M93 166 l14 0 M94 172 l12 0" stroke="#FCA5A5" stroke-width="1.5"/><rect x="58" y="160" width="26" height="10" rx="2" fill="#F8FAFC"/><text x="71" y="168" font-size="7" font-weight="800" text-anchor="middle" fill="#14532D" font-family="Arial">학생</text><path d="M50 160 Q54 186 60 214 M150 160 Q146 186 140 214" stroke="#92400E" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M50 160 Q54 186 60 214 M150 160 Q146 186 140 214" stroke="#FBBF24" stroke-width="1.5" fill="none" stroke-dasharray="3 4"/><rect x="134" y="196" width="18" height="12" rx="3" fill="#FBBF24"/>').replace(KZ_COLLAR,''),
+ H:s=>addHead(s.replace(KZ_BELLY,KZ_BELLY+KZ_TOP('#F8FAFC')+'<path d="M64 150 Q100 164 136 150 L138 216 Q100 224 62 216 Z" fill="#fff" stroke="#CBD5E1" stroke-width="2"/>'+[[88,170],[112,170],[88,186],[112,186]].map(([x,y])=>'<circle cx="'+x+'" cy="'+y+'" r="3.2" fill="#334155"/>').join('')+'<path d="M76 146 Q100 160 124 146 L112 164 L100 158 L88 164 Z" fill="#D7263D" stroke="#9F1239" stroke-width="2"/><path d="M98 196 h22 v16 h-22 z" fill="#E2E8F0" stroke="#CBD5E1"/><text x="109" y="208" font-size="9" text-anchor="middle">🥄</text>').replace(KZ_COLLAR,''),
+   '<path d="M62 66 L62 44 L138 44 L138 66 Q100 72 62 66 Z" fill="#fff" stroke="#CBD5E1" stroke-width="2.5"/><path d="M62 52 Q100 58 138 52" stroke="#E2E8F0" stroke-width="2" fill="none"/><g fill="#fff" stroke="#CBD5E1" stroke-width="2.5"><circle cx="70" cy="30" r="17"/><circle cx="130" cy="30" r="17"/><circle cx="100" cy="18" r="20"/></g><path d="M64 44 Q100 50 136 44 L136 40 Q100 30 64 40 Z" fill="#fff"/><path d="M84 40 v-8 M100 40 v-12 M116 40 v-8" stroke="#E2E8F0" stroke-width="2"/>'),
+ K:s=>addHead(s.replace(KZ_BELLY,KZ_TOP('#111827')+'<path d="M44 180 C46 152 70 142 100 142 L100 223 C50 219 42 202 44 180 Z" fill="#7C3AED" opacity=".55"/><path d="M84 146 L100 200 L116 146 Z" fill="#F472B6"/><path d="M84 146 L100 200 L116 146" stroke="#FBBF24" stroke-width="4" fill="none" stroke-linejoin="round"/><path d="M48 168 L60 160 L72 168 L84 160 M152 168 L140 160 L128 168 L116 160" stroke="#FBBF24" stroke-width="3" fill="none"/>'+[[60,186],[70,204],[134,186],[128,204],[56,200],[144,200],[100,212]].map(([x,y])=>'<circle cx="'+x+'" cy="'+y+'" r="2.4" fill="#FDE68A"/>').join('')+'<text x="100" y="185" font-size="13" text-anchor="middle" fill="#FBBF24">★</text>').replace(KZ_COLLAR,''),
+   '<path d="M156 92 Q164 120 128 128" stroke="#1F2937" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="125" cy="128" rx="5.5" ry="4" fill="#1F2937"/><path d="M34 96 C28 34 172 34 166 96" stroke="#1F2937" stroke-width="4" fill="none"/><rect x="152" y="86" width="12" height="18" rx="5" fill="#7C3AED"/><text x="174" y="44" font-size="18" fill="#F472B6">★</text><text x="8" y="60" font-size="14" fill="#FBBF24">✦</text><text x="166" y="150" font-size="12" fill="#A78BFA">♪</text><text x="22" y="140" font-size="12" fill="#FBBF24">✦</text>')
+};
+const OUTFIT_KEYS=['B','W','C','U','D','S','F','H','K'];
 
 // ================= CORE =================
 const S={lvl:'b',name:'',total:0,best:{},team:false,mis:{},played:{}};
-const store={get(k,d){try{const v=localStorage.getItem('gs2_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('gs2_'+k,JSON.stringify(v))}catch(e){}}};
+const store={get(k,d){try{const v=localStorage.getItem('gs3_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('gs3_'+k,JSON.stringify(v))}catch(e){}}};
 ['total','best','mis','played','name','lvl'].forEach(k=>{const v=store.get(k,null);if(v!==null)S[k]=v});
 const $=s=>document.querySelector(s);const view=$('#view');
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-const pick=(a,n)=>shuffle(a).slice(0,n);
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+/* ---- DECK: no repeats until the whole bank is used ---- */
+const MEM={};
+function deck(name,arr,n){
+ let st=store.get('dk_'+name,null)||MEM[name];
+ if(!st||st.len!==arr.length)st={len:arr.length,q:[],last:[]};
+ if(st.q.length<n){const fresh=shuffle([...arr.keys()]).filter(i=>!st.q.includes(i));const recent=st.last||[];
+  st.q=st.q.concat(fresh.filter(i=>!recent.includes(i)),fresh.filter(i=>recent.includes(i)))}
+ const take=st.q.slice(0,n);st.q=st.q.slice(n);st.last=take;MEM[name]=st;store.set('dk_'+name,st);
+ return take.map(i=>arr[i]);
+}
+const left=(name,arr)=>{const st=store.get('dk_'+name,null)||MEM[name];return st&&st.len===arr.length?st.q.length:arr.length};
 let T=null,SES=0;const live=id=>id===SES;
-function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1400)}
+function toast(t){const el=$('#toast');el.innerHTML=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),1500)}
 function addTotal(n){S.total+=n;store.set('total',S.total);$('#total').textContent=S.total;if(S.total>=300)mission('p300')}
 let AC=null;function snd(type){try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.connect(g);g.connect(AC.destination);const t=AC.currentTime;
- const seq={ok:[[660,0],[880,.08]],no:[[220,0],[180,.1]],win:[[523,0],[659,.1],[784,.2],[1046,.3]],flip:[[520,0]],pop:[[900,0]]}[type]||[[440,0]];
+ const seq={ok:[[660,0],[880,.08]],no:[[220,0],[180,.1]],win:[[523,0],[659,.1],[784,.2],[1046,.3]],flip:[[520,0]],pop:[[900,0]],meow:[[700,0],[520,.12]]}[type]||[[440,0]];
  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+seq[seq.length-1][1]+.18);
  o.type=type==='no'?'sawtooth':'triangle';seq.forEach(([f,d])=>o.frequency.setValueAtTime(f,t+d));o.start(t);o.stop(t+seq[seq.length-1][1]+.2)}catch(e){}}
 function say(text){try{if(!window.speechSynthesis)return false;const u=new SpeechSynthesisUtterance(text);u.lang='ko-KR';u.rate=.85;const v=speechSynthesis.getVoices().find(v=>/ko/i.test(v.lang));if(v)u.voice=v;speechSynthesis.cancel();speechSynthesis.speak(u);return true}catch(e){return false}}
 const cv=$('#cf'),cx=cv.getContext('2d');let parts=[];
-function confetti(){cv.width=innerWidth;cv.height=innerHeight;const C=['#E11D48','#2563EB','#F59E0B','#16A34A','#7C3AED'];const was=parts.length;for(let i=0;i<140;i++)parts.push({x:innerWidth/2,y:innerHeight/3,vx:(Math.random()-.5)*14,vy:Math.random()*-12-3,s:Math.random()*8+4,c:C[i%5],r:Math.random()*6,l:120});if(!was)tick()}
+function confetti(){cv.width=innerWidth;cv.height=innerHeight;const C=['#FF5A7A','#4F7DF5','#FFB020','#22C55E','#A855F7'];const was=parts.length;for(let i=0;i<140;i++)parts.push({x:innerWidth/2,y:innerHeight/3,vx:(Math.random()-.5)*14,vy:Math.random()*-12-3,s:Math.random()*8+4,c:C[i%5],r:Math.random()*6,l:120});if(!was)tick()}
 function tick(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.r+=.1;p.l--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);cx.restore()});parts=parts.filter(p=>p.l>0&&p.y<cv.height+20);if(parts.length)requestAnimationFrame(tick);else cx.clearRect(0,0,cv.width,cv.height)}
-const MISSIONS=[{id:'g5',t:'5 ta har xil o\'yinni o\'ynang',ic:'🎮'},{id:'s3',t:'Istalgan o\'yinda 3 yulduz oling',ic:'⭐'},{id:'lv',t:'3 ta har xil darajada o\'ynang',ic:'🪜'},{id:'tp',t:'TOPIK mini-testdan 80% oling',ic:'📝'},{id:'d3',t:'Shart g\'ildiragida 3 shart bajaring',ic:'🎡'},{id:'p300',t:'Jami 300 ball to\'plang',ic:'💎'}];
+/* ---- KO'ZMUNCHOQ ---- */
+let kzUid=1;
+function kzHTML(o,cls,id){const n=kzUid++;const svg=(o&&OUTFIT[o]?OUTFIT[o](KZ_SVG):KZ_SVG).replace(/id="kz(Iris|Fur)"/g,'id="kz$1'+n+'"').replace(/url\(#kz(Iris|Fur)\)/g,'url(#kz$1'+n+')');return `<div class="kz ${cls||''}" ${id?'id="'+id+'"':''}>${svg}</div>`}
+function kzAnim(el,cls,ms){if(!el)return;el.classList.remove('tilt','jump','jump3','sad','look');void el.offsetWidth;el.classList.add(cls);setTimeout(()=>el.classList.remove(cls),ms||1500)}
+function kzBlink(){document.querySelectorAll('.kz').forEach(k=>{if(!k.classList.contains('happy'))k.classList.add('blink')});setTimeout(()=>document.querySelectorAll('.kz').forEach(k=>k.classList.remove('blink')),150);setTimeout(kzBlink,2200+Math.random()*3000)}
+setTimeout(kzBlink,1500);
+const KZ_OK=['Zo\'r! 🎉','To\'ppa-to\'g\'ri! ✨','Barakalla! 👏','잘했어요! 💯','Ajoyib! 😻','대박! 🔥'],KZ_NO=['Hechqisi yo\'q 😿','Keyingisida albatta! 💪','Xato ham dars 🐾','Diqqat bilan! 👀'];
+let popT;function kzReact(ok){const w=$('#buddy');if(!w)return;const k=w.querySelector('.kz'),b=w.querySelector('.bub');b.textContent=rnd(ok?KZ_OK:KZ_NO);w.className='buddy show '+(ok?'ok':'no');k.classList.toggle('happy',ok);kzAnim(k,ok?'jump':'sad',1200);clearTimeout(popT);popT=setTimeout(()=>{w.className='buddy';k.classList.remove('happy')},1600)}
+const TIPS=['Har kuni 15 daqiqa — bir yilda 90 soatdan ortiq dars! ⏰','Yangi so\'zni ovoz chiqarib 3 marta takrorlang 🗣️','Xato qilishdan qo\'rqmang — xato ham dars 😺','Har o\'yinda yangi so\'zlar chiqadi — barchasini yig\'ing! 🎯','Koreyscha qo\'shiq tinglab, tanish so\'zlarni toping 🎧','Do\'stingiz bilan jamoaviy rejimda bellashing! 🔴🔵'];
+/* ---- missions & results ---- */
+const MISSIONS=[{id:'g5',t:'5 ta har xil o\'yinni o\'ynang',ic:'🎮'},{id:'s3',t:'Istalgan o\'yinda 3 yulduz oling',ic:'⭐'},{id:'lv',t:'3 ta darajada o\'ynang',ic:'🪜'},{id:'tp',t:'TOPIK mini-testdan 80% oling',ic:'📝'},{id:'d3',t:'Shart g\'ildiragida 3 shart bajaring',ic:'🎡'},{id:'p300',t:'Jami 300 ball to\'plang',ic:'💎'}];
 function mission(id){if(S.mis[id])return;S.mis[id]=1;store.set('mis',S.mis);setTimeout(()=>toast('🏅 Missiya bajarildi! +20 ball'),700);S.total+=20;store.set('total',S.total);$('#total').textContent=S.total}
 function markPlayed(key){S.played[key]=1;store.set('played',S.played);const ks=Object.keys(S.played);if(ks.length>=5)mission('g5');if(new Set(ks.map(k=>k.split(':')[0])).size>=3)mission('lv')}
 function topBar(title,stats){return `<div class="top"><button class="back" id="bk">← Menyu</button><b class="gt">${title}</b><div class="stats" id="st">${stats||''}</div></div>`}
+function buddy(){return `<div class="buddy" id="buddy"><div class="bub"></div>${kzHTML(LV().kz,'sm')}</div>`}
 function bindBack(){$('#bk').onclick=()=>{try{speechSynthesis.cancel()}catch(e){};home()}}
-let CUR=null; // current game launcher for "again"
+let CUR=null;
 function result(key,score,max,extra){
  clearInterval(T);SES++;const pct=max?score/max:0;const stars=pct>=.9?3:pct>=.6?2:pct>0?1:0;if(stars===3)mission('s3');
  let rec=false;if(!S.best[key]||score>S.best[key]){S.best[key]=score;store.set('best',S.best);rec=true}addTotal(score);markPlayed(key);
- if(stars>=2){snd('win');confetti()}
- const msg=stars===3?'Ajoyib! 대박! 🎉':stars===2?'Juda yaxshi! 잘했어요! 👏':stars===1?'Yaxshi boshlanish! 화이팅! 💪':'Yana urinib ko\'ring! 💪';
- view.innerHTML=`<div class="panel res"><div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div><h2>${msg}</h2><p>${S.name?S.name+', s':'S'}izning natijangiz: <b style="color:var(--navy);font-size:22px">${score}</b> / ${max}${rec&&score>0?' · 🏆 Yangi rekord!':''}</p>${extra||''}
- <button class="big green" id="again">Yana o'ynash</button><button class="big ghost" id="menu">Menyuga qaytish</button></div>`;
+ const msg=stars===3?'Ajoyib! 대박! 🎉':stars===2?'Juda yaxshi! 잘했어요! 👏':stars===1?'Yaxshi boshlanish! 화이팅! 💪':'Yana urinib ko\'ramiz! 💪';
+ const say2=stars>=2?'Men siz bilan faxrlanaman! Keyingi o\'yinda yangi so\'zlar kutmoqda 😻':'Xafa bo\'lmang, men yoningizdaman. Yana bir bor urinamiz! 🐾';
+ view.innerHTML=`<div class="panel res"><div class="reskz">${kzHTML('D','lg',stars>=2?'kzRes':'kzRes')}<div class="rbub">${say2}</div></div><div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div><h2>${msg}</h2><p>${S.name?S.name+', s':'S'}izning natijangiz: <b class="sc">${score}</b> / ${max}${rec&&score>0?' · 🏆 Yangi rekord!':''}</p>${extra||''}
+ <div class="row c"><button class="big green" id="again">🔄 Yangi so'zlar bilan</button><button class="big ghost" id="menu">Menyuga</button></div></div>`;
+ const k=$('#kzRes');if(stars>=2){snd('win');confetti();k.classList.add('happy');kzAnim(k,'jump3',2200)}else kzAnim(k,'sad',1500);
  const c=CUR;$('#again').onclick=()=>c();$('#menu').onclick=home;
 }
 // ================= ENGINES =================
-// MCQ: items [{q, sub, a, opts, say, exp, cls}]
 function mcq(key,title,items,o={}){
  const me=++SES;let i=0,score=0,combo=0,team=0,ts=[0,0];const N=items.length,TL=o.timer||0;
  function render(){
   if(!live(me))return;
-  if(i>=N){if(o.test&&score>=N*.8*10)mission('tp');const extra=S.team&&TL?`<p style="font-size:20px">🔴 1-jamoa: <b>${ts[0]}</b> &nbsp; 🔵 2-jamoa: <b>${ts[1]}</b><br>${ts[0]===ts[1]?'Durang!':(ts[0]>ts[1]?'1-jamoa':'2-jamoa')+' g\'olib! 🏆'}</p>`:'';return result(key,score,N*(TL?15:10),extra)}
-  const it=items[i];const opts=it.fixed?it.opts:shuffle(it.opts);
-  view.innerHTML=`<div class="panel">${topBar(title,`<span class="stat">${i+1}/${N}</span><span class="stat">⭐ ${score}</span>${combo>1?`<span class="stat combo">🔥 x${combo}</span>`:''}`)}
+  if(i>=N){if(o.test&&score>=N*8)mission('tp');const extra=S.team&&TL?`<p class="teamres">🔴 1-jamoa: <b>${ts[0]}</b> &nbsp; 🔵 2-jamoa: <b>${ts[1]}</b><br>${ts[0]===ts[1]?'Durang!':(ts[0]>ts[1]?'1-jamoa':'2-jamoa')+' g\'olib! 🏆'}</p>`:'';return result(key,score,N*(TL?15:10),extra)}
+  const it=items[i];const opts=shuffle(it.opts);
+  view.innerHTML=`<div class="panel game">${topBar(title,`<span class="stat">${i+1}/${N}</span><span class="stat">⭐ ${score}</span>${combo>1?`<span class="stat combo">🔥 x${combo}</span>`:''}`)}
    ${S.team&&TL?`<div class="teams"><div class="team a ${team===0?'on':''}">🔴 1-jamoa: ${ts[0]}</div><div class="team b ${team===1?'on':''}">🔵 2-jamoa: ${ts[1]}</div></div>`:''}
    ${TL?'<div class="bar"><i id="tb" style="width:100%"></i></div>':''}
    ${it.say?`<button class="speak" id="sp">🔊</button>`:''}
    <div class="word ${it.cls||''}"><div class="k ${it.say&&!it.show?'hide':''}" id="kw">${it.q}</div><div class="h">${it.sub||''}</div></div>
-   <div class="opts ${o.one?'one':''}">${opts.map(x=>`<button class="opt kr">${x}</button>`).join('')}</div>
-   <div class="expl hide" id="ex"></div>${o.explain?'<button class="big hide" id="nx">Keyingi →</button>':''}</div>`;
+   <div class="opts ${o.one?'one':''}">${opts.map((x,k)=>`<button class="opt kr"><span class="ob">${'ABCD'[k]}</span>${x}</button>`).join('')}</div>
+   <div class="expl hide" id="ex"></div>${o.explain?'<button class="big hide" id="nx">Keyingi →</button>':''}</div>${buddy()}`;
   bindBack();
   if(it.say){$('#sp').onclick=()=>{if(!say(it.say))$('#kw').classList.remove('hide')};setTimeout(()=>{if(live(me)&&!say(it.say))$('#kw').classList.remove('hide')},250)}
-  let left=TL*10;clearInterval(T);
-  if(TL){const tb=$('#tb');T=setInterval(()=>{if(!live(me))return clearInterval(T);left--;tb.style.width=(left/(TL*10)*100)+'%';if(left<=0){clearInterval(T);answer(null)}},100)}
+  let lt=TL*10;clearInterval(T);
+  if(TL){const tb=$('#tb');T=setInterval(()=>{if(!live(me))return clearInterval(T);lt--;tb.style.width=(lt/(TL*10)*100)+'%';if(lt<=0){clearInterval(T);answer(null)}},100)}
   view.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(b));
-  function answer(b){clearInterval(T);view.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.textContent===it.a)x.classList.add('ok')});
+  const txt=b=>b.textContent.slice(1);
+  function answer(b){clearInterval(T);view.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(txt(x)===it.a)x.classList.add('ok')});
    if(it.say)$('#kw').classList.remove('hide');
-   const right=b&&b.textContent===it.a;
-   if(right){combo++;const pts=TL?Math.min(15,10+Math.ceil(left/(TL*2))+(combo>2?2:0)):10;score+=pts;if(S.team&&TL)ts[team]+=pts;snd('ok');if(!o.explain)toast(combo>2?`🔥 ${combo} ketma-ket!`:'To\'g\'ri! 정답!')}
-   else{combo=0;if(b)b.classList.add('no');snd('no');if(!o.explain)toast(b?'Afsus! 오답':'Vaqt tugadi ⏰')}
+   const right=b&&txt(b)===it.a;kzReact(right);
+   if(right){combo++;const pts=TL?Math.min(15,10+Math.ceil(lt/(TL*2))+(combo>2?2:0)):10;score+=pts;if(S.team&&TL)ts[team]+=pts;snd('ok')}
+   else{combo=0;if(b)b.classList.add('no');snd('no');if(!b)toast('Vaqt tugadi ⏰')}
    if(o.explain){const ex=$('#ex');ex.innerHTML=(right?'✅ <b>To\'g\'ri!</b> ':'❌ <b>To\'g\'ri javob: '+it.a+'</b><br>')+(it.exp?'📌 '+it.exp:'');ex.classList.remove('hide');const nx=$('#nx');nx.classList.remove('hide');nx.onclick=()=>{i++;team=1-team;render()}}
    else setTimeout(()=>{if(live(me)){i++;team=1-team;render()}},1100)}
  }
  render();
 }
-// build MCQ items from pairs [a,b]: show a, answer b
-function fromPairs(pairs,n,o={}){const sel=pick(pairs,n);return sel.map(p=>{const a=p[1];const wrong=pick(pairs.filter(x=>x[1]!==a),3).map(x=>x[1]);return {q:p[0],a,opts:[a,...wrong],sub:o.sub||'',say:o.say?p[0]:null,cls:o.cls||''}})}
-function fromTest(T,n){return pick(T,n).map(([q,op,e])=>({q,a:op[0],opts:op,exp:e,cls:'tq'}))}
-function memory(key,title,pairsAll,n=6){
- const me=++SES;const pairs=pick(pairsAll,n);let cards=[];pairs.forEach((p,idx)=>{cards.push({t:p[0],id:idx,kr:1},{t:p[1],id:idx,kr:0})});cards=shuffle(cards);
+// items from a bank via deck (fresh each game); distractors from whole bank
+function fromPairs(name,pairs,n,o={}){return deck(name,pairs,n).map(p=>{const a=p[1];const pool=pairs.filter(x=>x[1]!==a);const wrong=[];while(wrong.length<3&&pool.length){const w=pool.splice(Math.floor(Math.random()*pool.length),1)[0][1];if(!wrong.includes(w))wrong.push(w)}return {q:p[0],a,opts:[a,...wrong],sub:o.sub||'',say:o.say?p[0]:null,show:o.show,cls:o.cls||''}})}
+function fromTest(name,T,n){return deck(name,T,n).map(([q,op,e])=>({q:q.replace(/\[(.+?)\]/,'<u>$1</u>'),a:op[0],opts:op,exp:e,cls:'tq'}))}
+function memory(key,title,name,bank,n=6){
+ const me=++SES;const pairs=deck(name,bank,n);let cards=[];pairs.forEach((p,idx)=>{cards.push({t:p[0],id:idx,kr:1},{t:p[1],id:idx,kr:0})});cards=shuffle(cards);
  let open=[],done=0,moves=0,lock=false,start=Date.now();
- view.innerHTML=`<div class="panel">${topBar(title,'<span class="stat" id="mv">Yurish: 0</span><span class="stat" id="tm">⏱ 0 s</span>')}<p class="uz">Koreyscha va uning juftini toping</p>
-  <div class="grid">${cards.map((c,i)=>`<button class="card" data-i="${i}"><div class="in"><div class="f">?</div><div class="b ${c.kr?'kr':''}">${c.t}</div></div></button>`).join('')}</div></div>`;
+ view.innerHTML=`<div class="panel game">${topBar(title,'<span class="stat" id="mv">Yurish: 0</span><span class="stat" id="tm">⏱ 0 s</span>')}<p class="uz">Koreyscha va uning juftini toping</p>
+  <div class="grid">${cards.map((c,i)=>`<button class="card" data-i="${i}"><div class="in"><div class="f">🐾</div><div class="b ${c.kr?'kr':''}">${c.t}</div></div></button>`).join('')}</div></div>${buddy()}`;
  bindBack();clearInterval(T);T=setInterval(()=>{if(!live(me))return clearInterval(T);const el=$('#tm');if(el)el.textContent='⏱ '+Math.floor((Date.now()-start)/1000)+' s'},500);
  view.querySelectorAll('.card').forEach(el=>el.onclick=()=>{
   if(lock||el.classList.contains('flip')||el.classList.contains('done'))return;
   const c=cards[+el.dataset.i];el.classList.add('flip');snd('flip');if(c.kr&&/[가-힣]/.test(c.t))say(c.t);open.push([el,c]);
   if(open.length===2){moves++;$('#mv').textContent='Yurish: '+moves;lock=true;const [[e1,c1],[e2,c2]]=open;
-   if(c1.id===c2.id){setTimeout(()=>{e1.classList.add('done');e2.classList.add('done');snd('ok');open=[];lock=false;done++;
+   if(c1.id===c2.id){setTimeout(()=>{e1.classList.add('done');e2.classList.add('done');snd('ok');kzReact(true);open=[];lock=false;done++;
      if(done===pairs.length){const sec=Math.floor((Date.now()-start)/1000);const score=Math.max(10,100-Math.max(0,moves-n)*6-Math.floor(sec/3));setTimeout(()=>{if(live(me))result(key,score,100,`<p>${moves} yurish · ${sec} soniya</p>`)},500)}},350)}
    else setTimeout(()=>{e1.classList.remove('flip');e2.classList.remove('flip');open=[];lock=false},850)}});
 }
-function build(key,title,sents,n=6){
- const me=++SES;const list=pick(sents,Math.min(n,sents.length));let i=0,score=0;
+function build(key,title,name,bank,n=6){
+ const me=++SES;const list=deck(name,bank,Math.min(n,bank.length));let i=0,score=0;
  function render(){
   if(!live(me))return;if(i>=list.length)return result(key,score,list.length*10);
   const [kr,uz]=list[i];const words=kr.split(' ');let chosen=[];let pool=shuffle(words.map((w,k)=>({w,k})));if(pool.map(x=>x.w).join(' ')===kr&&words.length>1)pool=pool.reverse();let tries=0;
   function draw(){
-   view.innerHTML=`<div class="panel">${topBar(title,`<span class="stat">${i+1}/${list.length}</span><span class="stat">⭐ ${score}</span>`)}
+   view.innerHTML=`<div class="panel game">${topBar(title,`<span class="stat">${i+1}/${list.length}</span><span class="stat">⭐ ${score}</span>`)}
     <p class="uz">🇺🇿 ${uz}</p><div class="slot" id="slot">${chosen.length?chosen.map((c,j)=>`<button class="chip" data-s="${j}">${c.w}</button>`).join(''):'<span class="ph">So\'zlarni bosib shu yerga joylang</span>'}</div>
     <div class="chips">${pool.map((c,j)=>`<button class="chip" data-p="${j}">${c.w}</button>`).join('')}</div>
-    <div class="row c"><button class="big violet" id="hear">🔊 Eshitish</button><button class="big green" id="chk">Tekshirish</button></div></div>`;
+    <div class="row c"><button class="big violet" id="hear">🔊 Eshitish</button><button class="big green" id="chk">Tekshirish</button></div></div>${buddy()}`;
    bindBack();
    view.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{chosen.push(pool.splice(+b.dataset.p,1)[0]);snd('flip');draw()});
    view.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{pool.push(chosen.splice(+b.dataset.s,1)[0]);draw()});
    $('#hear').onclick=()=>{if(!say(kr))toast(kr)};
    $('#chk').onclick=()=>{if(pool.length){toast('Hamma so\'zlarni joylang');return}
-    const ok=chosen.map(c=>c.w).join(' ')===kr;const sl=$('#slot');
-    if(ok){sl.classList.add('ok');const p=tries===0?10:tries===1?6:3;score+=p;snd('ok');say(kr);toast('To\'g\'ri! 완벽해요! +'+p);setTimeout(()=>{if(live(me)){i++;render()}},1400)}
-    else{tries++;sl.classList.add('no');snd('no');toast(tries>=3?'To\'g\'ri javob: '+kr:'Yana urinib ko\'ring');setTimeout(()=>{if(!live(me))return;if(tries>=3){i++;render()}else{pool=pool.concat(chosen);chosen=[];draw()}},tries>=3?2200:800)}};
+    const ok=chosen.map(c=>c.w).join(' ')===kr;const sl=$('#slot');kzReact(ok);
+    if(ok){sl.classList.add('ok');const p=tries===0?10:tries===1?6:3;score+=p;snd('ok');say(kr);setTimeout(()=>{if(live(me)){i++;render()}},1400)}
+    else{tries++;sl.classList.add('no');snd('no');if(tries>=3)toast('To\'g\'ri javob: '+kr);setTimeout(()=>{if(!live(me))return;if(tries>=3){i++;render()}else{pool=pool.concat(chosen);chosen=[];draw()}},tries>=3?2200:800)}};
   }
   draw();
  }
  render();
 }
-function order(key,title,sets){
- const me=++SES;const list=shuffle(sets);let i=0,score=0;
+function order(key,title,name,bank,n=3){
+ const me=++SES;const list=deck(name,bank,Math.min(n,bank.length));let i=0,score=0;
  function render(){
   if(!live(me))return;if(i>=list.length)return result(key,score,list.length*10);
   const right=list[i];const labels=['(가)','(나)','(다)','(라)'];let pool=shuffle(right.map((t,k)=>({t,k})));if(pool.every((x,k)=>x.k===k))pool=pool.reverse();let chosen=[],tries=0;
   const lab=pool.map((x,j)=>({...x,l:labels[j]}));pool=lab.slice();
   function draw(){
-   view.innerHTML=`<div class="panel">${topBar(title,`<span class="stat">${i+1}/${list.length}</span><span class="stat">⭐ ${score}</span>`)}
+   view.innerHTML=`<div class="panel game">${topBar(title,`<span class="stat">${i+1}/${list.length}</span><span class="stat">⭐ ${score}</span>`)}
     <p class="uz">Gaplarni to'g'ri tartibda bosing (1-gapdan boshlab)</p>
     <div class="olist">${chosen.map((c,j)=>`<div class="oi done"><b>${j+1}</b><span class="kr">${c.l} ${c.t}</span></div>`).join('')}</div>
     <div class="olist">${pool.map((c,j)=>`<button class="oi" data-p="${j}"><b>${c.l}</b><span class="kr">${c.t}</span></button>`).join('')}</div>
-    <div class="row c"><button class="big ghost" id="rs">↺ Qaytadan</button></div></div>`;
+    <div class="row c"><button class="big ghost" id="rs">↺ Qaytadan</button></div></div>${buddy()}`;
    bindBack();
    $('#rs').onclick=()=>{pool=lab.slice();chosen=[];draw()};
    view.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{chosen.push(pool.splice(+b.dataset.p,1)[0]);snd('flip');
-    if(!pool.length){const ok=chosen.every((c,k)=>c.k===k);
-     if(ok){const p=tries===0?10:tries===1?6:3;score+=p;snd('win');toast('Zo\'r! To\'g\'ri tartib! +'+p);setTimeout(()=>{if(live(me)){i++;render()}},1300)}
-     else{tries++;snd('no');toast(tries>=2?'To\'g\'ri tartib: '+right.map((t,k)=>lab.find(x=>x.k===k).l).join(' → '):'Tartib noto\'g\'ri, yana urinib ko\'ring');setTimeout(()=>{if(!live(me))return;if(tries>=2){i++;render()}else{pool=lab.slice();chosen=[];draw()}},tries>=2?2600:900)}}
+    if(!pool.length){const ok=chosen.every((c,k)=>c.k===k);kzReact(ok);
+     if(ok){const p=tries===0?10:tries===1?6:3;score+=p;snd('win');setTimeout(()=>{if(live(me)){i++;render()}},1300)}
+     else{tries++;snd('no');if(tries>=2)toast('To\'g\'ri tartib: '+right.map((t,k)=>lab.find(x=>x.k===k).l).join(' → '));setTimeout(()=>{if(!live(me))return;if(tries>=2){i++;render()}else{pool=lab.slice();chosen=[];draw()}},tries>=2?2600:900)}}
     else draw()});
   }
   draw();
  }
  render();
 }
-function tf(key,title,V){
- const me=++SES;let score=0,left=60,cur=null,streak=0;
- function next(){const [k,u]=V[Math.floor(Math.random()*V.length)];const truth=Math.random()<.5;const oth=V.filter(x=>x[1]!==u);const shown=truth?u:oth[Math.floor(Math.random()*oth.length)][1];cur={truth};$('#tfk').textContent=k;$('#tfu').textContent=shown}
- view.innerHTML=`<div class="panel">${topBar(title,`<span class="stat" id="tt">⏱ 60</span><span class="stat" id="ts">⭐ 0</span>`)}<p class="uz">Tarjima to'g'rimi? 60 soniyada iloji boricha ko'p javob bering!</p>
+function tf(key,title,name,V){
+ const me=++SES;let score=0,lt=60,cur=null,streak=0;const bag=deck(name,V,Math.min(V.length,40));let bi=0;
+ function next(){const [k,u]=bag[bi++%bag.length];const truth=Math.random()<.5;const oth=V.filter(x=>x[1]!==u);const shown=truth?u:rnd(oth)[1];cur={truth};$('#tfk').textContent=k;$('#tfu').textContent=shown}
+ view.innerHTML=`<div class="panel game">${topBar(title,`<span class="stat" id="tt">⏱ 60</span><span class="stat" id="ts">⭐ 0</span>`)}<p class="uz">Tarjima to'g'rimi? 60 soniyada iloji boricha ko'p javob bering!</p>
   <div class="tfcard"><div class="k kr" id="tfk"></div><div class="eq">=</div><div class="u" id="tfu"></div></div>
-  <div class="tfb"><button class="opt ok2" id="yes">✔ To'g'ri</button><button class="opt no2" id="no">✘ Noto'g'ri</button></div></div>`;
+  <div class="tfb"><button class="opt ok2" id="yes">✔ To'g'ri</button><button class="opt no2" id="no">✘ Noto'g'ri</button></div></div>${buddy()}`;
  bindBack();next();clearInterval(T);
- T=setInterval(()=>{if(!live(me))return clearInterval(T);left--;$('#tt').textContent='⏱ '+left;if(left<=0){clearInterval(T);result(key,score,30,`<p>${score} ta to'g'ri javob</p>`)}},1000);
- const ans=v=>{if(left<=0)return;const card=$('.tfcard');if(v===cur.truth){score++;streak++;snd('ok');card.className='tfcard good'}else{streak=0;snd('no');card.className='tfcard bad'}
+ T=setInterval(()=>{if(!live(me))return clearInterval(T);lt--;$('#tt').textContent='⏱ '+lt;if(lt<=0){clearInterval(T);result(key,score,30,`<p>${score} ta to'g'ri javob</p>`)}},1000);
+ const ans=v=>{if(lt<=0)return;const card=$('.tfcard');const ok=v===cur.truth;if(ok){score++;streak++;snd('ok');card.className='tfcard good'}else{streak=0;snd('no');card.className='tfcard bad'}if(streak%5===0&&ok)kzReact(true);
   $('#ts').textContent='⭐ '+score+(streak>2?' 🔥'+streak:'');setTimeout(()=>{const c=$('.tfcard');if(c)c.className='tfcard'},250);next()};
  $('#yes').onclick=()=>ans(true);$('#no').onclick=()=>ans(false);
 }
 function rain(key,title,letters){
- const me=++SES;let score=0,left=45,miss=0;const area=()=>$('#ra');let target=null,drops=[];
- view.innerHTML=`<div class="panel">${topBar(title,`<span class="stat" id="tt">⏱ 45</span><span class="stat" id="ts">⭐ 0</span>`)}
-  <div class="tgt">Faqat shu harfni bosing: <b class="kr" id="tg"></b> <span id="tr"></span></div><div class="rain" id="ra"></div></div>`;
+ const me=++SES;let score=0,lt=45;const area=()=>$('#ra');let target=null;const tq=deck('rainT',letters,letters.length);let ti=0;
+ view.innerHTML=`<div class="panel game">${topBar(title,`<span class="stat" id="tt">⏱ 45</span><span class="stat" id="ts">⭐ 0</span>`)}
+  <div class="tgt">Faqat shu harfni bosing: <b class="kr" id="tg"></b> <span id="tr"></span></div><div class="rain" id="ra"></div></div>${buddy()}`;
  bindBack();
- function newTarget(){target=letters[Math.floor(Math.random()*letters.length)];$('#tg').textContent=target[0];$('#tr').textContent='('+target[1]+')'}
+ function newTarget(){target=tq[ti++%tq.length];$('#tg').textContent=target[0];$('#tr').textContent='('+target[1]+')'}
  newTarget();
- function spawn(){const a=area();if(!a)return;const isT=Math.random()<.4;const L=isT?target:letters[Math.floor(Math.random()*letters.length)];
+ function spawn(){const a=area();if(!a)return;const isT=Math.random()<.4;const L=isT?target:rnd(letters);
   const d=document.createElement('button');d.className='drop kr';d.textContent=L[0];d.style.left=(5+Math.random()*82)+'%';const dur=4200+Math.random()*1800;d.style.animationDuration=dur+'ms';a.appendChild(d);
-  d.onclick=()=>{if(L[0]===target[0]){score++;snd('pop');d.classList.add('hit');$('#ts').textContent='⭐ '+score;if(score%5===0){newTarget();toast('Yangi harf!')}}else{score=Math.max(0,score-1);snd('no');d.classList.add('miss');$('#ts').textContent='⭐ '+score}setTimeout(()=>d.remove(),200)};
+  d.onclick=()=>{if(L[0]===target[0]){score++;snd('pop');d.classList.add('hit');$('#ts').textContent='⭐ '+score;if(score%5===0){newTarget();kzReact(true)}}else{score=Math.max(0,score-1);snd('no');d.classList.add('miss');$('#ts').textContent='⭐ '+score}setTimeout(()=>d.remove(),200)};
   setTimeout(()=>d.remove(),dur)}
  clearInterval(T);let tickN=0;
- T=setInterval(()=>{if(!live(me))return clearInterval(T);tickN++;spawn();if(tickN%2===0){left--;$('#tt').textContent='⏱ '+left}if(left<=0){clearInterval(T);result(key,score,30,`<p>${score} ta harf tutildi</p>`)}},500);
+ T=setInterval(()=>{if(!live(me))return clearInterval(T);tickN++;spawn();if(tickN%2===0){lt--;$('#tt').textContent='⏱ '+lt}if(lt<=0){clearInterval(T);result(key,score,30,`<p>${score} ta harf tutildi</p>`)}},500);
 }
-function wheel(key,title,dares){
- const me=++SES;const items=shuffle(dares).slice(0,8);let rot=0,spinning=false,done=store.get('dares',0);
- const C=['#E11D48','#2563EB','#F59E0B','#16A34A','#7C3AED','#0EA5E9','#EC4899','#14B8A6'];
- view.innerHTML=`<div class="panel">${topBar(title,`<span class="stat" id="dd">✅ ${done} ta shart</span>`)}<p class="uz">G'ildirakni aylantiring va chiqqan shartni bajaring! O'qituvchi yoki sinf baholaydi.</p>
-  <div class="wheelbox"><div class="pin">▼</div><canvas id="wh" width="360" height="360"></canvas></div><button class="big red" id="spin">🎡 Aylantirish</button>
-  <div class="dare hide" id="dare"><div id="dt"></div><div class="row c"><button class="big green" id="ok">✅ Bajardim (+15)</button><button class="big ghost" id="skip">⏭ O'tkazish</button></div></div></div>`;
+function wheel(key,title,name,dares){
+ const me=++SES;const items=deck(name,dares,Math.min(8,dares.length));let rot=0,spinning=false,done=store.get('dares',0);
+ const C=['#FF5A7A','#4F7DF5','#FFB020','#22C55E','#A855F7','#06B6D4','#EC4899','#14B8A6'];
+ view.innerHTML=`<div class="panel game">${topBar(title,`<span class="stat" id="dd">✅ ${done} ta shart</span>`)}<p class="uz">G'ildirakni aylantiring va chiqqan shartni bajaring! O'qituvchi yoki sinf baholaydi.</p>
+  <div class="wheelbox"><div class="pin">▼</div><canvas id="wh" width="360" height="360"></canvas></div><div class="row c"><button class="big red" id="spin">🎡 Aylantirish</button></div>
+  <div class="dare hide" id="dare"><div id="dt"></div><div class="row c"><button class="big green" id="ok">✅ Bajardim (+15)</button><button class="big ghost" id="skip">⏭ O'tkazish</button></div></div></div>${buddy()}`;
  bindBack();const g=$('#wh').getContext('2d'),n=items.length;
- function draw(){g.clearRect(0,0,360,360);for(let k=0;k<n;k++){const a0=rot+k*2*Math.PI/n,a1=a0+2*Math.PI/n;g.beginPath();g.moveTo(180,180);g.arc(180,180,170,a0,a1);g.closePath();g.fillStyle=C[k%8];g.fill();g.save();g.translate(180,180);g.rotate(a0+Math.PI/n);g.fillStyle='#fff';g.font='900 26px Nunito';g.textAlign='right';g.fillText(k+1,150,9);g.restore()}
-  g.beginPath();g.arc(180,180,34,0,2*Math.PI);g.fillStyle='#fff';g.fill();g.fillStyle='#0F1E4F';g.font='900 22px Noto Sans KR';g.textAlign='center';g.fillText('시작',180,188)}
+ function draw(){g.clearRect(0,0,360,360);for(let k=0;k<n;k++){const a0=rot+k*2*Math.PI/n,a1=a0+2*Math.PI/n;g.beginPath();g.moveTo(180,180);g.arc(180,180,170,a0,a1);g.closePath();g.fillStyle=C[k%8];g.fill();g.strokeStyle='#fff';g.lineWidth=3;g.stroke();g.save();g.translate(180,180);g.rotate(a0+Math.PI/n);g.fillStyle='#fff';g.font='900 26px Nunito';g.textAlign='right';g.fillText(k+1,150,9);g.restore()}
+  g.beginPath();g.arc(180,180,34,0,2*Math.PI);g.fillStyle='#fff';g.fill();g.fillStyle='#3B2A6B';g.font='900 22px Noto Sans KR';g.textAlign='center';g.fillText('시작',180,188)}
  draw();
  $('#spin').onclick=()=>{if(spinning)return;spinning=true;$('#dare').classList.add('hide');const target=rot+Math.PI*2*(5+Math.random()*3);const start=rot,t0=performance.now(),dur=3200;snd('flip');
   (function an(t){if(!live(me))return;const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);rot=start+(target-start)*e;draw();if(p<1)requestAnimationFrame(an);else{spinning=false;
    const ang=((-Math.PI/2-rot)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);const k=Math.floor(ang/(2*Math.PI/n));snd('win');
    $('#dt').innerHTML=`<div class="dn" style="background:${C[k%8]}">${k+1}</div><div class="dtx">${items[k]}</div>`;$('#dare').classList.remove('hide')}})(t0)};
- $('#ok').onclick=()=>{done++;store.set('dares',done);$('#dd').textContent='✅ '+done+' ta shart';addTotal(15);markPlayed(key);confetti();toast('Zo\'r! +15 ball');$('#dare').classList.add('hide');if(done>=3)mission('d3')};
+ $('#ok').onclick=()=>{done++;store.set('dares',done);$('#dd').textContent='✅ '+done+' ta shart';addTotal(15);markPlayed(key);confetti();kzReact(true);$('#dare').classList.add('hide');if(done>=3)mission('d3')};
  $('#skip').onclick=()=>$('#dare').classList.add('hide');
 }
 // ================= LEVELS & GAMES =================
-const LETTERS=HANGUL_C.concat(HANGUL_V);
-function conjOpts(c){const st=c[0].replace(/다$/,'');const cand=[st+'어요',st+'아요',st+'요',c[0]+'요',st+'해요'].filter(x=>x!==c[1]);const o=[c[1]];shuffle(cand).forEach(x=>{if(o.length<4&&!o.includes(x))o.push(x)});return o}
-const G=(id,ic,bg,t,d,run)=>({id,ic,bg,t,d,run});
+function conjOpts(c){const st=c[0].replace(/다$/,'');const cand=[st+'어요',st+'아요',st+'요',c[0]+'요',st+'해요',st+'여요'].filter(x=>x!==c[1]);const o=[c[1]];shuffle(cand).forEach(x=>{if(o.length<4&&!o.includes(x))o.push(x)});return o}
+const partItems=n=>deck('part',PART,n).map(p=>({q:p[0],a:p[1],opts:p[2],sub:'Bo\'sh joyga qaysi qo\'shimcha?',cls:'tq'}));
+const G=(id,ic,bg,t,d,run,bank)=>({id,ic,bg,t,d,run,bank});
 const LEVELS=[
- {id:'b',ic:'🌱',name:'Boshlang\'ich',sub:'Hangul, birinchi so\'zlar',col:'#16A34A',games:[
-  G('rain','🌧','#DCFCE7','Harf yomg\'iri','Tushayotgan harflar ichidan keraklisini tuting',k=>rain(k,'🌧 Harf yomg\'iri',LETTERS)),
-  G('letter','🔤','#E0F2FE','Harfni top','O\'qilishiga qarab Hangul harfini toping',k=>mcq(k,'🔤 Harfni top',fromPairs(LETTERS.map(x=>[x[1],x[0]]),10,{sub:'Bu qaysi harf?'}).map(x=>({...x,cls:'lat'})))),
-  G('syl','🧱','#FEF3C7','Bo\'g\'in yasash','Undosh + unli = qaysi bo\'g\'in?',k=>mcq(k,'🧱 Bo\'g\'in yasash',pick(SYL,10).map(s=>({q:s[0]+' + '+s[1],a:s[2],opts:[s[2],...pick(SYL.filter(x=>x[2]!==s[2]),3).map(x=>x[2])],sub:'Qaysi bo\'g\'in hosil bo\'ladi?'})))),
-  G('emoji','🖼','#FCE7F3','Rasmli so\'zlar','Rasmga mos koreyscha so\'zni tanlang',k=>mcq(k,'🖼 Rasmli so\'zlar',fromPairs(EMOJI.map(e=>[e[0],e[1]]),10,{sub:'Bu nima? 이게 뭐예요?',cls:'emo'}))),
-  G('num','🔢','#EDE9FE','Raqamlar','Koreyscha raqamni songa aylantiring',k=>mcq(k,'🔢 Raqamlar',fromPairs(NUM_SINO.concat(NUM_NAT).map(x=>[x[0],String(x[1])]),10,{sub:'Bu qaysi son?',say:true}).map(x=>({...x,show:true})))),
-  G('greet','👋','#FFEDD5','Salomlashuv iboralari','Kundalik iboralarning ma\'nosini toping',k=>mcq(k,'👋 Iboralar',fromPairs(GREET,10,{sub:'Bu ibora nimani anglatadi?'}),{one:true})),
-  G('quiz','🎯','#FFE4E6','So\'z musobaqasi','10 soniyada so\'z ma\'nosini toping',k=>mcq(k,'🎯 So\'z musobaqasi',fromPairs(V_BEG,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10})),
-  G('mem','🃏','#DBEAFE','Juftini top','Rasm va koreyscha so\'zni juftlang',k=>memory(k,'🃏 Juftini top',EMOJI.map(e=>[e[1],e[0]]))),
-  G('build','🧩','#DCFCE7','Gap tuz','Oddiy gaplarni yig\'ing',k=>build(k,'🧩 Gap tuz',S_BEG)),
-  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','Aylantiring va shartni bajaring',k=>wheel(k,'🎡 Shart g\'ildiragi',DARE.b))]},
- {id:'m',ic:'🌿',name:'O\'rta',sub:'Kundalik muloqot, grammatika',col:'#2563EB',games:[
-  G('quiz','🎯','#FFE4E6','So\'z musobaqasi','10 soniyada so\'z ma\'nosini toping',k=>mcq(k,'🎯 So\'z musobaqasi',fromPairs(V_MID,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10})),
-  G('listen','🔊','#EDE9FE','Eshit va top','So\'zni tinglang, ma\'nosini tanlang',k=>mcq(k,'🔊 Eshit va top',fromPairs(V_MID,10,{say:true,sub:'Tinglang va ma\'nosini tanlang'}),{timer:15})),
-  G('conj','🔁','#FEF3C7','Fe\'l tuslash','Fe\'lning -아/어요 shaklini toping',k=>mcq(k,'🔁 Fe\'l tuslash',pick(CONJ,10).map(c=>({q:c[0],a:c[1],opts:conjOpts(c),sub:'-아/어요 shakli qaysi?'})))),
-  G('part','🧷','#E0F2FE','Qo\'shimchani top','Gapga mos 조사 (은/는, 을/를, 에, 에서...)',k=>mcq(k,'🧷 Qo\'shimchani top',pick(PART,10).map(p=>({q:p[0],a:p[1],opts:p[2],sub:'Bo\'sh joyga qaysi qo\'shimcha?',cls:'tq'})))),
-  G('ant','↔️','#FCE7F3','Teskari ma\'no','So\'zning antonimini toping',k=>mcq(k,'↔️ Teskari ma\'no',fromPairs(ANT,10,{sub:'Teskari ma\'nosi qaysi?'}))),
-  G('mem','🃏','#DBEAFE','Juftini top','So\'z va tarjimasini juftlang',k=>memory(k,'🃏 Juftini top',V_MID)),
-  G('build','🧩','#DCFCE7','Gap tuz','Gaplarni to\'g\'ri tartibda yig\'ing',k=>build(k,'🧩 Gap tuz',S_MID)),
-  G('tf','⚡','#CFFAFE','To\'g\'ri yoki noto\'g\'ri','60 soniyalik tezkor bellashuv',k=>tf(k,'⚡ To\'g\'ri yoki noto\'g\'ri',V_MID)),
-  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','Aylantiring va shartni bajaring',k=>wheel(k,'🎡 Shart g\'ildiragi',DARE.m))]},
- {id:'a',ic:'🌳',name:'Yuqori',sub:'Ijtimoiy mavzular, iboralar',col:'#7C3AED',games:[
-  G('quiz','🎯','#FFE4E6','So\'z musobaqasi','Murakkab so\'zlar, 10 soniya',k=>mcq(k,'🎯 So\'z musobaqasi',fromPairs(V_ADV,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10})),
-  G('idiom','🦶','#FEF3C7','Frazeologizm va maqollar','Iboraning ma\'nosini toping',k=>mcq(k,'🦶 Frazeologizm va maqollar',fromPairs(IDIOM,10,{sub:'Bu ibora nimani anglatadi?'}),{one:true})),
-  G('head','📰','#E0F2FE','Gazeta sarlavhalari','Sarlavhaning ma\'nosini toping',k=>mcq(k,'📰 Gazeta sarlavhalari',fromPairs(HEAD,10,{sub:'Sarlavha nimani bildiradi?'}),{one:true})),
-  G('mem','🃏','#DBEAFE','Iboralar jufti','Ibora va ma\'nosini juftlang',k=>memory(k,'🃏 Iboralar jufti',IDIOM)),
-  G('build','🧩','#DCFCE7','Murakkab gap tuz','Grammatik shakllar bilan gap yig\'ing',k=>build(k,'🧩 Murakkab gap tuz',S_ADV)),
-  G('listen','🔊','#EDE9FE','Eshit va top','Murakkab so\'zlarni tinglang',k=>mcq(k,'🔊 Eshit va top',fromPairs(V_ADV,10,{say:true,sub:'Tinglang va ma\'nosini tanlang'}),{timer:15})),
-  G('tf','⚡','#CFFAFE','To\'g\'ri yoki noto\'g\'ri','60 soniyalik tezkor bellashuv',k=>tf(k,'⚡ To\'g\'ri yoki noto\'g\'ri',V_ADV)),
-  G('wheel','🎡','#FCE7F3','Munozara g\'ildiragi','Aylantiring va shartni bajaring',k=>wheel(k,'🎡 Munozara g\'ildiragi',DARE.a))]},
- {id:'t1',ic:'📘',name:'TOPIK I',sub:'1–2-darajaga tayyorgarlik',col:'#0EA5E9',games:[
-  G('test','📝','#FEF3C7','TOPIK I mini-test','Imtihon uslubidagi savollar, izohi bilan',k=>mcq(k,'📝 TOPIK I mini-test',fromTest(T1,10),{explain:true,one:true,test:true})),
-  G('lis','🎧','#EDE9FE','Tinglash: javobni top','Savolni eshiting va mos javobni tanlang',k=>mcq(k,'🎧 Tinglash',pick(L1,8).map(([s,h,op])=>({q:s,say:s,a:op[0],opts:op,sub:h})),{one:true})),
-  G('ord','🔀','#DCFCE7','Gaplarni tartibla','Hikoyani to\'g\'ri tartibga soling',k=>order(k,'🔀 Gaplarni tartibla',ORD1)),
-  G('quiz','🎯','#FFE4E6','Imtihon so\'zlari','TOPIK I so\'zlari, 10 soniya',k=>mcq(k,'🎯 Imtihon so\'zlari',fromPairs(V_BEG.concat(V_MID),10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10})),
-  G('part','🧷','#E0F2FE','Qo\'shimchalar','TOPIK I dagi 조사 savollari',k=>mcq(k,'🧷 Qo\'shimchalar',pick(PART,10).map(p=>({q:p[0],a:p[1],opts:p[2],sub:'Bo\'sh joyga qaysi qo\'shimcha?',cls:'tq'})))),
-  G('tf','⚡','#CFFAFE','To\'g\'ri yoki noto\'g\'ri','60 soniyalik tezkor bellashuv',k=>tf(k,'⚡ To\'g\'ri yoki noto\'g\'ri',V_BEG.concat(V_MID))),
-  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','TOPIK I shartlari',k=>wheel(k,'🎡 Shart g\'ildiragi',DARE.t1))]},
- {id:'t2',ic:'📕',name:'TOPIK II',sub:'3–6-darajaga tayyorgarlik',col:'#E11D48',games:[
-  G('test','📝','#FEF3C7','TOPIK II mini-test','Grammatika va strategiya savollari, izohi bilan',k=>mcq(k,'📝 TOPIK II mini-test',fromTest(T2,10),{explain:true,one:true,test:true})),
-  G('lis','🎧','#EDE9FE','Tinglash: keyingi gap','듣기 4–8 uslubida: eshiting va javobni tanlang',k=>mcq(k,'🎧 Keyingi gap',pick(L2,6).map(([s,h,op])=>({q:s,say:s,a:op[0],opts:op,sub:h})),{one:true})),
-  G('ord','🔀','#DCFCE7','Tartiblash (13–15)','읽기 13–15 kabi gaplarni tartiblang',k=>order(k,'🔀 Tartiblash 13–15',ORD2)),
-  G('head','📰','#E0F2FE','Sarlavha ustasi (25–27)','Gazeta sarlavhasini tushuning',k=>mcq(k,'📰 Sarlavha ustasi',fromPairs(HEAD,10,{sub:'Sarlavha nimani bildiradi?'}),{one:true})),
-  G('graph','📈','#DBEAFE','53-grafik iboralari','Grafik iboralarini ma\'nosi bilan juftlang',k=>memory(k,'📈 53-grafik iboralari',GRAPH)),
-  G('idiom','🦶','#FCE7F3','Iboralar (21–22)','Frazeologizm savollariga tayyorlaning',k=>mcq(k,'🦶 Iboralar',fromPairs(IDIOM,10,{sub:'Bu ibora nimani anglatadi?'}),{one:true})),
-  G('quiz','🎯','#FFE4E6','Imtihon so\'zlari','TOPIK II so\'zlari, 10 soniya',k=>mcq(k,'🎯 Imtihon so\'zlari',fromPairs(V_ADV,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10})),
-  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','TOPIK II shartlari',k=>wheel(k,'🎡 Shart g\'ildiragi',DARE.t2))]}
+ {id:'b',ic:'🌱',kz:'B',name:'Boshlang\'ich',sub:'Hangul, birinchi so\'zlar',col:'#22C55E',bgc:'#ECFDF3',games:[
+  G('rain','🌧','#DCFCE7','Harf yomg\'iri','Tushayotgan harflardan keraklisini tuting',k=>rain(k,'🌧 Harf yomg\'iri',LETTERS),LETTERS),
+  G('letter','🔤','#E0F2FE','Harfni top','O\'qilishiga qarab Hangul harfini toping',k=>mcq(k,'🔤 Harfni top',fromPairs('letter',LETTERS.map(x=>[x[1],x[0]]),10,{sub:'Bu qaysi harf?',cls:'lat'})),LETTERS),
+  G('syl','🧱','#FEF3C7','Bo\'g\'in yasash','Undosh + unli = qaysi bo\'g\'in?',k=>mcq(k,'🧱 Bo\'g\'in yasash',fromPairs('syl',SYL.map(s=>[s[0]+' + '+s[1],s[2]]),10,{sub:'Qaysi bo\'g\'in hosil bo\'ladi?'})),SYL),
+  G('sylb','🏗','#FFEDD5','Patchim ustasi','Undosh + unli + patchim = ?',k=>mcq(k,'🏗 Patchim ustasi',fromPairs('sylb',SYLB,10,{sub:'Qaysi bo\'g\'in hosil bo\'ladi?',cls:'sm'})),SYLB),
+  G('emoji','🖼','#FCE7F3','Rasmli so\'zlar','Rasmga mos koreyscha so\'zni tanlang',k=>mcq(k,'🖼 Rasmli so\'zlar',fromPairs('emoji',EMOJI,10,{sub:'이게 뭐예요? — Bu nima?',cls:'emo'})),EMOJI),
+  G('emoUz','🍓','#FFE4E6','So\'z ma\'nosi','Rasmli so\'zlarning o\'zbekcha ma\'nosi',k=>mcq(k,'🍓 So\'z ma\'nosi',fromPairs('emoUz',EMOJI_UZ,10,{sub:'Bu so\'z nimani anglatadi?',say:true,show:true})),EMOJI_UZ),
+  G('num','🔢','#EDE9FE','Raqamlar','Koreyscha raqamni songa aylantiring',k=>mcq(k,'🔢 Raqamlar',fromPairs('num',NUMS,10,{sub:'Bu qaysi son?',say:true,show:true})),NUMS),
+  G('greet','👋','#FFEDD5','Iboralar','Kundalik iboralar ma\'nosini toping',k=>mcq(k,'👋 Iboralar',fromPairs('greet',GREET,10,{sub:'Bu ibora nimani anglatadi?'}),{one:true}),GREET),
+  G('quiz','🎯','#FFE4E6','So\'z musobaqasi','10 soniyada so\'z ma\'nosini toping',k=>mcq(k,'🎯 So\'z musobaqasi',fromPairs('vb',V_BEG,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10}),V_BEG),
+  G('mem','🃏','#DBEAFE','Juftini top','Rasm va so\'zni juftlang',k=>memory(k,'🃏 Juftini top','memE',EMOJI.map(e=>[e[1],e[0]])),EMOJI),
+  G('build','🧩','#DCFCE7','Gap tuz','Oddiy gaplarni yig\'ing',k=>build(k,'🧩 Gap tuz','sb',S_BEG),S_BEG),
+  G('tf','⚡','#CFFAFE','To\'g\'ri yoki noto\'g\'ri','60 soniyalik tezkor bellashuv',k=>tf(k,'⚡ To\'g\'ri yoki noto\'g\'ri','tfb',V_BEG),V_BEG),
+  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','Aylantiring va shartni bajaring',k=>wheel(k,'🎡 Shart g\'ildiragi','db',DARE.b),DARE.b)]},
+ {id:'m',ic:'🌿',kz:'C',name:'O\'rta',sub:'Kundalik muloqot, grammatika',col:'#4F7DF5',bgc:'#EEF3FF',games:[
+  G('quiz','🎯','#FFE4E6','So\'z musobaqasi','10 soniyada so\'z ma\'nosini toping',k=>mcq(k,'🎯 So\'z musobaqasi',fromPairs('vm',V_MID,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10}),V_MID),
+  G('listen','🔊','#EDE9FE','Eshit va top','So\'zni tinglang, ma\'nosini tanlang',k=>mcq(k,'🔊 Eshit va top',fromPairs('vmL',V_MID,10,{say:true,sub:'Tinglang va ma\'nosini tanlang'}),{timer:15}),V_MID),
+  G('conj','🔁','#FEF3C7','Fe\'l tuslash','-아/어요 shaklini toping',k=>mcq(k,'🔁 Fe\'l tuslash',deck('conj',CONJ,10).map(c=>({q:c[0],a:c[1],opts:conjOpts(c),sub:'-아/어요 shakli qaysi?'}))),CONJ),
+  G('part','🧷','#E0F2FE','Qo\'shimchani top','은/는, 을/를, 에, 에서...',k=>mcq(k,'🧷 Qo\'shimchani top',partItems(10)),PART),
+  G('ant','↔️','#FCE7F3','Teskari ma\'no','So\'zning antonimini toping',k=>mcq(k,'↔️ Teskari ma\'no',fromPairs('ant',ANT,10,{sub:'Teskari ma\'nosi qaysi?'})),ANT),
+  G('mem','🃏','#DBEAFE','Juftini top','So\'z va tarjimasini juftlang',k=>memory(k,'🃏 Juftini top','memM',V_MID),V_MID),
+  G('build','🧩','#DCFCE7','Gap tuz','Gaplarni to\'g\'ri tartibda yig\'ing',k=>build(k,'🧩 Gap tuz','sm',S_MID),S_MID),
+  G('tf','⚡','#CFFAFE','To\'g\'ri yoki noto\'g\'ri','60 soniyalik tezkor bellashuv',k=>tf(k,'⚡ To\'g\'ri yoki noto\'g\'ri','tfm',V_MID),V_MID),
+  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','Aylantiring va shartni bajaring',k=>wheel(k,'🎡 Shart g\'ildiragi','dm',DARE.m),DARE.m)]},
+ {id:'a',ic:'🌳',kz:'S',name:'Yuqori',sub:'Ijtimoiy mavzular, iboralar',col:'#A855F7',bgc:'#F5EEFF',games:[
+  G('quiz','🎯','#FFE4E6','So\'z musobaqasi','Murakkab so\'zlar, 10 soniya',k=>mcq(k,'🎯 So\'z musobaqasi',fromPairs('va',V_ADV,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10}),V_ADV),
+  G('idiom','🦶','#FEF3C7','Frazeologizm va maqollar','Iboraning ma\'nosini toping',k=>mcq(k,'🦶 Frazeologizm va maqollar',fromPairs('idiom',IDIOM,10,{sub:'Bu ibora nimani anglatadi?'}),{one:true}),IDIOM),
+  G('head','📰','#E0F2FE','Gazeta sarlavhalari','Sarlavhaning ma\'nosini toping',k=>mcq(k,'📰 Gazeta sarlavhalari',fromPairs('head',HEAD,10,{sub:'Sarlavha nimani bildiradi?'}),{one:true}),HEAD),
+  G('mem','🃏','#DBEAFE','Iboralar jufti','Ibora va ma\'nosini juftlang',k=>memory(k,'🃏 Iboralar jufti','memI',IDIOM),IDIOM),
+  G('build','🧩','#DCFCE7','Murakkab gap tuz','Grammatik shakllar bilan gap yig\'ing',k=>build(k,'🧩 Murakkab gap tuz','sa',S_ADV),S_ADV),
+  G('listen','🔊','#EDE9FE','Eshit va top','Murakkab so\'zlarni tinglang',k=>mcq(k,'🔊 Eshit va top',fromPairs('vaL',V_ADV,10,{say:true,sub:'Tinglang va ma\'nosini tanlang'}),{timer:15}),V_ADV),
+  G('ant','↔️','#FCE7F3','Teskari ma\'no','Antonimlar, jumladan ilmiy so\'zlar',k=>mcq(k,'↔️ Teskari ma\'no',fromPairs('antA',ANT,10,{sub:'Teskari ma\'nosi qaysi?'})),ANT),
+  G('tf','⚡','#CFFAFE','To\'g\'ri yoki noto\'g\'ri','60 soniyalik tezkor bellashuv',k=>tf(k,'⚡ To\'g\'ri yoki noto\'g\'ri','tfa',V_ADV),V_ADV),
+  G('wheel','🎡','#FCE7F3','Munozara g\'ildiragi','Aylantiring va shartni bajaring',k=>wheel(k,'🎡 Munozara g\'ildiragi','da',DARE.a),DARE.a)]},
+ {id:'t1',ic:'📘',kz:'F',name:'TOPIK I',sub:'1–2-darajaga tayyorgarlik',col:'#06B6D4',bgc:'#E6FAFD',games:[
+  G('test','📝','#FEF3C7','TOPIK I mini-test','Imtihon savollari, izohi bilan',k=>mcq(k,'📝 TOPIK I mini-test',fromTest('t1',T1,10),{explain:true,one:true,test:true}),T1),
+  G('lis','🎧','#EDE9FE','Tinglash: javobni top','Savolni eshiting, mos javobni tanlang',k=>mcq(k,'🎧 Tinglash',deck('l1',L1,8).map(([s,h,op])=>({q:s,say:s,a:op[0],opts:op,sub:h})),{one:true}),L1),
+  G('ord','🔀','#DCFCE7','Gaplarni tartibla','Hikoyani to\'g\'ri tartibga soling',k=>order(k,'🔀 Gaplarni tartibla','o1',ORD1),ORD1),
+  G('quiz','🎯','#FFE4E6','Imtihon so\'zlari','TOPIK I so\'zlari, 10 soniya',k=>mcq(k,'🎯 Imtihon so\'zlari',fromPairs('vt1',V_BEG.concat(V_MID),10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10}),V_BEG.concat(V_MID)),
+  G('part','🧷','#E0F2FE','Qo\'shimchalar','TOPIK I dagi 조사 savollari',k=>mcq(k,'🧷 Qo\'shimchalar',partItems(10)),PART),
+  G('conj','🔁','#FFEDD5','Fe\'l tuslash','-아/어요 shaklini toping',k=>mcq(k,'🔁 Fe\'l tuslash',deck('conj1',CONJ,10).map(c=>({q:c[0],a:c[1],opts:conjOpts(c),sub:'-아/어요 shakli qaysi?'}))),CONJ),
+  G('tf','⚡','#CFFAFE','To\'g\'ri yoki noto\'g\'ri','60 soniyalik tezkor bellashuv',k=>tf(k,'⚡ To\'g\'ri yoki noto\'g\'ri','tft1',V_BEG.concat(V_MID)),V_BEG.concat(V_MID)),
+  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','TOPIK I shartlari',k=>wheel(k,'🎡 Shart g\'ildiragi','dt1',DARE.t1),DARE.t1)]},
+ {id:'t2',ic:'📕',kz:'D',name:'TOPIK II',sub:'3–6-darajaga tayyorgarlik',col:'#FF5A7A',bgc:'#FFF0F3',games:[
+  G('test','📝','#FEF3C7','TOPIK II mini-test','Grammatika va strategiya, izohi bilan',k=>mcq(k,'📝 TOPIK II mini-test',fromTest('t2',T2,10),{explain:true,one:true,test:true}),T2),
+  G('lis','🎧','#EDE9FE','Tinglash: keyingi gap','듣기 4–8 uslubida',k=>mcq(k,'🎧 Keyingi gap',deck('l2',L2,6).map(([s,h,op])=>({q:s,say:s,a:op[0],opts:op,sub:h})),{one:true}),L2),
+  G('ord','🔀','#DCFCE7','Tartiblash (13–15)','읽기 13–15 kabi gaplarni tartiblang',k=>order(k,'🔀 Tartiblash 13–15','o2',ORD2),ORD2),
+  G('head','📰','#E0F2FE','Sarlavha ustasi (25–27)','Gazeta sarlavhasini tushuning',k=>mcq(k,'📰 Sarlavha ustasi',fromPairs('head2',HEAD,10,{sub:'Sarlavha nimani bildiradi?'}),{one:true}),HEAD),
+  G('graph','📈','#DBEAFE','53-grafik iboralari','Grafik iboralarini juftlang',k=>memory(k,'📈 53-grafik iboralari','graph',GRAPH),GRAPH),
+  G('idiom','🦶','#FCE7F3','Iboralar (21–22)','Frazeologizm savollari',k=>mcq(k,'🦶 Iboralar',fromPairs('idiom2',IDIOM,10,{sub:'Bu ibora nimani anglatadi?'}),{one:true}),IDIOM),
+  G('quiz','🎯','#FFE4E6','Imtihon so\'zlari','TOPIK II so\'zlari, 10 soniya',k=>mcq(k,'🎯 Imtihon so\'zlari',fromPairs('vt2',V_ADV,10,{sub:'Bu so\'z nimani anglatadi?'}),{timer:10}),V_ADV),
+  G('build','🧩','#DCFCE7','Gap tuz','TOPIK II grammatikasi bilan',k=>build(k,'🧩 Gap tuz','st2',S_ADV),S_ADV),
+  G('wheel','🎡','#FCE7F3','Shart g\'ildiragi','TOPIK II shartlari',k=>wheel(k,'🎡 Shart g\'ildiragi','dt2',DARE.t2),DARE.t2)]}
 ];
+const LV=()=>LEVELS.find(l=>l.id===S.lvl)||LEVELS[0];
 function home(){
  SES++;clearInterval(T);$('#total').textContent=S.total;
- const L=LEVELS.find(l=>l.id===S.lvl)||LEVELS[0];const nG=LEVELS.reduce((a,l)=>a+l.games.length,0);
- view.innerHTML=`<section class="hero"><div class="bg">한글</div><h1>Koreyscha o'ynab o'rganamiz! 🎮</h1><p>${nG} ta o'yin · 5 ta daraja · shartlar · TOPIK testlari · missiyalar</p>
-  <div class="row"><input class="inp" id="nm" placeholder="Ismingizni yozing" value="${(S.name||'').replace(/"/g,'')}"></div>
-  <label class="toggle"><input type="checkbox" id="team" ${S.team?'checked':''}> Jamoaviy rejim (vaqtli o'yinlarda 2 jamoa navbatma-navbat)</label></section>
-  <div class="lvls">${LEVELS.map(l=>`<button class="lv ${l.id===L.id?'on':''}" data-l="${l.id}" style="--lc:${l.col}"><span class="li">${l.ic}</span><b>${l.name}</b><small>${l.sub}</small><i>${l.games.length} o'yin</i></button>`).join('')}</div>
-  <h2 class="sec" style="--lc:${L.col}">${L.ic} ${L.name}: o'yinlar</h2>
-  <div class="modes">${L.games.map(g=>{const k=L.id+':'+g.id;return `<button class="mode" data-g="${g.id}"><div class="ic" style="background:${g.bg}">${g.ic}</div><b>${g.t}</b><span>${g.d}</span><div class="best">${S.best[k]?'🏆 Rekord: '+S.best[k]:(S.played[k]?'✅ O\'ynalgan':'Hali o\'ynalmagan')}</div></button>`}).join('')}</div>
-  <div class="panel mis"><b>🏅 Missiyalar</b> <span class="mut">(har biri +20 ball)</span><div class="mlist">${MISSIONS.map(m=>`<div class="mi ${S.mis[m.id]?'done':''}">${S.mis[m.id]?'✅':m.ic} ${m.t}</div>`).join('')}</div></div>`;
+ const L=LV();const nG=LEVELS.reduce((a,l)=>a+l.games.length,0);const h=new Date().getHours();const greet=h<12?'Xayrli tong':h<18?'Xayrli kun':'Xayrli kech';
+ document.body.style.setProperty('--lc',L.col);document.body.style.setProperty('--lbg',L.bgc);
+ view.innerHTML=`<section class="hero"><div class="hl"><div class="tag">🐾 Ko'zmunchoq bilan o'ynab o'rganamiz</div><h1>Koreyscha o'yinlar</h1><p>${nG} ta o'yin · 5 ta daraja · har safar yangi so'zlar</p>
+   <input class="inp" id="nm" placeholder="Ismingizni yozing" value="${(S.name||'').replace(/"/g,'')}">
+   <label class="toggle"><input type="checkbox" id="team" ${S.team?'checked':''}> Jamoaviy rejim (2 jamoa navbatma-navbat)</label></div>
+  <div class="hr">${kzHTML(L.kz,'hero-kz','kzHome')}<div class="hbub" id="hb"><b>${greet}${S.name?', '+S.name:''}! 🐾</b>${rnd(TIPS)}</div></div></section>
+  <div class="lvls">${LEVELS.map(l=>`<button class="lv ${l.id===L.id?'on':''}" data-l="${l.id}" style="--c:${l.col};--b:${l.bgc}"><span class="li">${l.ic}</span><b>${l.name}</b><small>${l.sub}</small></button>`).join('')}</div>
+  <div class="sech"><h2>${L.ic} ${L.name}</h2><span>${L.games.length} ta o'yin</span></div>
+  <div class="modes">${L.games.map(g=>{const k=L.id+':'+g.id;const tot=g.bank.length;return `<button class="mode" data-g="${g.id}"><div class="ic" style="background:${g.bg}">${g.ic}</div><b>${g.t}</b><span>${g.d}</span><div class="meta"><em>📚 ${tot} ta</em>${S.best[k]?`<em class="gold">🏆 ${S.best[k]}</em>`:(S.played[k]?'<em>✅</em>':'')}</div></button>`}).join('')}</div>
+  <div class="panel mis"><div class="mh"><b>🏅 Missiyalar</b><span class="mut">har biri +20 ball</span></div><div class="mlist">${MISSIONS.map(m=>`<div class="mi ${S.mis[m.id]?'done':''}">${S.mis[m.id]?'✅':m.ic} ${m.t}</div>`).join('')}</div></div>`;
  view.querySelectorAll('.lv').forEach(b=>b.onclick=()=>{S.lvl=b.dataset.l;store.set('lvl',S.lvl);home()});
  $('#nm').oninput=e=>{S.name=e.target.value;store.set('name',S.name)};
  $('#team').onchange=e=>{S.team=e.target.checked};
- view.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{const g=L.games.find(x=>x.id===b.dataset.g);const k=L.id+':'+g.id;CUR=()=>g.run(k);CUR();window.scrollTo(0,0)});
+ const k=$('#kzHome');k.onclick=()=>{snd('meow');k.classList.add('happy');kzAnim(k,'jump',800);setTimeout(()=>k.classList.remove('happy'),900);$('#hb').innerHTML=`<b>Ko'zmunchoq 🐾</b>${rnd(TIPS)}`};
+ view.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{const g=L.games.find(x=>x.id===b.dataset.g);const key=L.id+':'+g.id;CUR=()=>{window.scrollTo(0,0);g.run(key)};CUR()});
 }
+setInterval(()=>{const k=$('#kzHome');if(k&&!document.hidden)kzAnim(k,Math.random()<.5?'tilt':'look',2200)},7000);
 try{speechSynthesis.getVoices()}catch(e){}
 home();
 
